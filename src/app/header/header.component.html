@@ -1,0 +1,31 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white" [containerInside]="true">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a routerLink="home" class="navbar-brand">
+    Game<span class="logo-blue-color">Zone</span>
+  </a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a routerLink="home" class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="store" class="nav-link waves-light" mdbWavesEffect>Store</a>
+      </li>
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item"><a class="nav-link"><app-login></app-login></a></li>
+      <li class="nav-item"><a class="nav-link"><app-register></app-register></a></li>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
