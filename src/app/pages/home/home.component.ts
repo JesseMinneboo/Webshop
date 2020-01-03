@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Game} from '../../model/game.model';
-import {ModalDirective} from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-home',
@@ -36,6 +35,21 @@ export class HomeComponent implements OnInit {
     new Game('Dead by Daylight', 'Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on ' +
       'the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught ' +
       'and killed.', 59.99, 'https://steamcdn-a.akamaihd.net/steam/apps/381210/header.jpg?t=1575392832')
+  ];
+
+  freeGames: Game[] = [
+    new Game('Dead by Daylight', 'Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on ' +
+      'the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught ' +
+      'and killed.', 0.00, 'https://steamcdn-a.akamaihd.net/steam/apps/381210/header.jpg?t=1575392832'),
+    new Game('Dead by Daylight', 'Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on ' +
+      'the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught ' +
+      'and killed.', 0.00, 'https://steamcdn-a.akamaihd.net/steam/apps/381210/header.jpg?t=1575392832'),
+    new Game('Dead by Daylight', 'Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on ' +
+      'the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught ' +
+      'and killed.', 0.00, 'https://steamcdn-a.akamaihd.net/steam/apps/381210/header.jpg?t=1575392832'),
+    new Game('Dead by Daylight', 'Dead by Daylight is a multiplayer (4vs1) horror game where one player takes on ' +
+      'the role of the savage Killer, and the other four players play as Survivors, trying to escape the Killer and avoid being caught ' +
+      'and killed.', 0.00, 'https://steamcdn-a.akamaihd.net/steam/apps/381210/header.jpg?t=1575392832')
   ];
 
   constructor() { }
