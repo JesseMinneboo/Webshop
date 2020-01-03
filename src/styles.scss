@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.letter-spacing-2 {
+  letter-spacing: 2px;
+}
+
+hr {
+  margin: 1% 0;
+}
+
+.max-lines-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* number of lines to show */
+}
+
+.push-down-5 {
+  margin-top: 5%;
+}
+
+
