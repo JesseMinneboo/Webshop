@@ -1,10 +1,17 @@
-<div class="jumbotron margin-10">
+<nav aria-label="breadcrumb" style="margin: 5vh 0 0 0;">
+  <ol class="breadcrumb">
+    <li (click)="goToHome()" class="breadcrumb-item"><a>Home</a></li>
+    <li class="breadcrumb-item active">Admin panel</li>
+  </ol>
+</nav>
+
+
+<div class="jumbotron margin-5">
   <h1 class="display-4">Admin panel</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-    featured content or information.</p>
+  <p class="lead"></p>
   <hr class="my-4">
-  <p>Add, edit or delete games in your webshop here:</p>
-  <a mdbBtn color="primary" size="lg" href="#" role="button" mdbWavesEffect>Add</a>
-  <a mdbBtn color="warning" size="lg" href="#" role="button" mdbWavesEffect>Edit</a>
-  <a mdbBtn color="danger" size="lg" href="#" role="button" mdbWavesEffect>Delete</a>
+  <p>Add, edit or delete games in your web shop here:</p>
+  <a (click)="goToAddComponent()" mdbBtn color="primary" size="sm" role="button" mdbWavesEffect>Add</a>
+  <a (click)="goToEditComponent()" routerLink="edit_game" mdbBtn color="warning" size="sm" role="button" mdbWavesEffect>Edit</a>
+  <a (click)="goToRemoveComponent()" routerLink="remove_game" mdbBtn color="danger" size="sm" role="button" mdbWavesEffect>Delete</a>
 </div>

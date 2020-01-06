@@ -12,3 +12,10 @@ public imagePath: string;
   }
 
 }
+
+export interface GameInterface {
+  title: string;
+  description: string;
+  price: number;
+  imagePath: string;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Game} from '../../model/game.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shoppingcart',
@@ -8,7 +9,7 @@ import {Game} from '../../model/game.model';
 })
 export class ShoppingcartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   gamesInList: Array<Game> = [
     new Game('A hat in time', 'A Hat in Time is a cute-as-heck 3D platformer featuring a little girl who ' +
@@ -29,4 +30,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
 
+  goToHome() {
+    this.router.navigateByUrl('/home')
+  }
 }
