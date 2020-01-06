@@ -14,12 +14,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { StoreComponent } from './pages/store/store.component';
 import { ShoppingcartComponent } from './pages/shoppingcart/shoppingcart.component';
 import { WarningModalComponent } from './shared/warning-modal/warning-modal.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'store', component: StoreComponent },
-  { path: 'shoppingcart', component: ShoppingcartComponent }
+  { path: 'shoppingcart', component: ShoppingcartComponent },
+  { path: 'admin', component: AdminComponent }
   // { path: '**', component: PageNotFoundComponent}
 ];
 
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     StoreComponent,
     ShoppingcartComponent,
     WarningModalComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
