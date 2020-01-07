@@ -1,11 +1,11 @@
 export class Game {
-public title: string;
+public name: string;
 public description: string;
 public price: number;
 public imagePath: string;
 
-  constructor(title: string, description: string, price: number, imagePath: string) {
-    this.title = title;
+  constructor(name: string, description: string, price: number, imagePath: string) {
+    this.name = name;
     this.description = description;
     this.price = price;
     this.imagePath = imagePath;
@@ -14,7 +14,7 @@ public imagePath: string;
 }
 
 export interface GameInterface {
-  title: string;
+  name: string;
   description: string;
   price: number;
   imagePath: string;

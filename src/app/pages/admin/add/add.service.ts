@@ -6,7 +6,7 @@ import {
   HttpEventType
 } from '@angular/common/http';
 
-import { GameInterface } from "../../../model/game.model";
+import { GameInterface } from "../../../models/game.model";
 
 @Injectable({ providedIn: 'root' })
 export class GameService {

@@ -18,6 +18,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { AddComponent } from './pages/admin/add/add.component';
 import { EditComponent } from './pages/admin/edit/edit.component';
 import { RemoveComponent } from './pages/admin/remove/remove.component';
+import {HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

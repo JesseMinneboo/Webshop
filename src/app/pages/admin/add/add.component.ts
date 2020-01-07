@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {GameInterface} from "../../../model/game.model";
+import {GameInterface} from "../../../models/game.model";
 
 @Component({
   selector: 'app-add',
