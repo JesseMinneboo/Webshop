@@ -13,15 +13,15 @@ export class AdminComponent implements OnInit {
   }
 
   goToAddComponent() {
-    this.router.navigateByUrl('/add_game');
+    this.router.navigateByUrl('/admin/add');
   }
 
   goToEditComponent() {
-    this.router.navigateByUrl('/edit_game');
+    this.router.navigateByUrl('/admin/edit');
   }
 
   goToRemoveComponent() {
-    this.router.navigateByUrl('/remove_game');
+    this.router.navigateByUrl('/admin/remove');
   }
 
   goToHome() {

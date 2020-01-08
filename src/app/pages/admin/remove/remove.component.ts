@@ -20,4 +20,8 @@ export class RemoveComponent implements OnInit {
   goToAdmin() {
     this.router.navigateByUrl('/admin')
   }
+
+  goToResults() {
+    this.router.navigateByUrl('/admin/remove/result')
+  }
 }

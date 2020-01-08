@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game, GameInterface} from '../../models/game.model';
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   mostPopular: Game[] = [];
   freeGames: Game[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.getFourNewGames();
@@ -65,5 +66,9 @@ export class HomeComponent implements OnInit {
       .subscribe(games => {
         this.freeGames = games;
       })
+  }
+
+  navigateToStore() {
+    this.router.navigateByUrl('/store')
   }
 }

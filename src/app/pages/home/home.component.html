@@ -116,7 +116,12 @@
     <div>
       <h2 class="card-title h1-responsive pt-3 mb-2 font-bold"><strong>Browse</strong></h2>
       <p>Explore our catalog for your next favorite game!</p>
-      <a routerLink="store" mdbBtn color="white" outline="true" class="waves-light" mdbWavesEffect>Browse all</a>
+      <a (click)="navigateToStore()"
+        routerLink="store"
+         mdbBtn color="white"
+         outline="true"
+         class="waves-light"
+         mdbWavesEffect>Browse all</a>
     </div>
   </div>
 </mdb-card>

@@ -19,6 +19,9 @@ import { AddComponent } from './pages/admin/add/add.component';
 import { EditComponent } from './pages/admin/edit/edit.component';
 import { RemoveComponent } from './pages/admin/remove/remove.component';
 import {HttpClientModule} from "@angular/common/http";
+import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { ResultsremoveComponent } from './pages/admin/remove/resultsremove/resultsremove.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,10 +29,11 @@ const appRoutes: Routes = [
   { path: 'store', component: StoreComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'add_game', component: AddComponent },
-  { path: 'edit_game', component: EditComponent },
-  { path: 'remove_game', component: RemoveComponent },
-  // { path: '**', component: PageNotFoundComponent}
+  { path: 'admin/add', component: AddComponent },
+  { path: 'admin/edit', component: EditComponent },
+  { path: 'admin/remove', component: RemoveComponent },
+  { path: 'admin/remove/result', component: ResultsremoveComponent },
+  { path: '**', component: PagenotfoundComponent}
 ];
 
 @NgModule({
@@ -46,6 +50,8 @@ const appRoutes: Routes = [
     AddComponent,
     EditComponent,
     RemoveComponent,
+    PagenotfoundComponent,
+    ResultsremoveComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass:HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

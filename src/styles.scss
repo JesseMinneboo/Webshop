@@ -15,13 +15,19 @@ hr {
 .max-lines-4 {
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 2.5ex;
+  height: 7.5ex; /* 2.5ex for each visible line */
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-line-clamp: 3; /* number of lines to show */
 }
 
 .push-down-5 {
   margin-top: 5%;
+}
+
+.push-down-up-2-5 {
+  margin: 2.5vh 0;
 }
 
 
