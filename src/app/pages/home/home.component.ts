@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Game, GameInterface} from '../../models/game.model';
-import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {Game} from '../../models/game.model';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {GameService} from '../../services/game.service';
+import {GameType} from '../../services/enums/gametype.enum';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,9 @@ export class HomeComponent implements OnInit {
   mostPopular: Game[] = [];
   freeGames: Game[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient,
+              private router: Router,
+              private gameService: GameService) { }
 
   ngOnInit() {
     this.getFourNewGames();
@@ -24,51 +27,24 @@ export class HomeComponent implements OnInit {
   }
 
   getFourNewGames() {
-    this.http.get<GameInterface>('http://localhost:9000/api/game/latest')
-      .pipe(
-        map(responseData => {
-        const gamesArray: GameInterface[] = [];
-        for (const key in responseData) {
-          gamesArray.push({ ...responseData[key]});
-        }
-        return gamesArray;
-      }))
-      .subscribe(games => {
-        this.recentlyAdded = games;
-      })
+    this.gameService.getFourGames(GameType.NEW).subscribe(response => {
+      this.recentlyAdded = response;
+    });
   }
 
   getFourPopularGames() {
-    this.http.get<GameInterface>('http://localhost:9000/api/game/popular')
-      .pipe(
-        map(responseData => {
-          const gamesArray: GameInterface[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }))
-      .subscribe(games => {
-        this.mostPopular = games;
-      })
+   this.gameService.getFourGames(GameType.POPULAR).subscribe(response => {
+     this.mostPopular = response;
+   })
   }
 
   getFourFreeGames() {
-    this.http.get<GameInterface>('http://localhost:9000/api/game/free')
-      .pipe(
-        map(responseData => {
-          const gamesArray: GameInterface[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }))
-      .subscribe(games => {
-        this.freeGames = games;
-      })
+    this.gameService.getFourGames(GameType.FREE).subscribe(response => {
+      this.freeGames = response;
+    })
   }
 
   navigateToStore() {
-    this.router.navigateByUrl('/store')
+    this.router.navigateByUrl('/store');
   }
 }
