@@ -1,54 +1,18 @@
-<nav aria-label="breadcrumb" style="margin: 5vh 0 0 0;">
-  <ol class="breadcrumb">
-    <li (click)="goToHome()" class="breadcrumb-item"><a>Home</a></li>
-    <li class="breadcrumb-item active">Admin panel</li>
-  </ol>
-</nav>
-
-
-<div class="jumbotron margin-5">
-  <h1 class="display-4">Admin panel</h1>
-  <p class="lead"></p>
-  <hr class="my-4">
-  <p>Add, edit or delete games in your web shop here:</p>
-  <a (click)="goToAddComponent()" mdbBtn color="primary" size="sm" role="button" mdbWavesEffect>Add</a>
-  <a (click)="goToEditComponent()" routerLink="edit_game" mdbBtn color="warning" size="sm" role="button" mdbWavesEffect>Edit</a>
-  <a (click)="goToRemoveComponent()" routerLink="remove_game" mdbBtn color="danger" size="sm" role="button" mdbWavesEffect>Delete</a>
-</div>
-
-
-<h2>Statistics</h2>
-
-<div class="row">
-  <div class="col-xs-12 col-md-4">
-    <mdb-card class="margin-custom">
-      <mdb-card-body>
-        <mdb-card-title>
-          <h4>Website searches</h4>
-        </mdb-card-title>
-        <mdb-card-text>12</mdb-card-text>
-      </mdb-card-body>
-    </mdb-card>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <mdb-card class="margin-custom">
-      <mdb-card-body>
-        <mdb-card-title>
-          <h4>Games bought</h4>
-        </mdb-card-title>
-        <mdb-card-text>4</mdb-card-text>
-      </mdb-card-body>
-    </mdb-card>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <mdb-card class="margin-custom">
-      <mdb-card-body>
-        <mdb-card-title>
-          <h4>Money earned</h4>
-        </mdb-card-title>
-        <mdb-card-text>$599.99</mdb-card-text>
-      </mdb-card-body>
-    </mdb-card>
-  </div>
-</div>
+<h2 style="margin-top: 5vh">Admin Panel</h2>
+<table mdbTable small="true" hover="true" responsive="true" style="margin-top: 2.5vh;" class="w-100 d-block d-md-table">
+  <thead>
+  <tr>
+    <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr mdbTableCol *ngFor="let el of elements">
+    <th scope="row">{{el.name}}</th>
+    <td>{{el.price}}</td>
+    <td>{{el.imagePath}}</td>
+    <td><button mdbBtn type="button" size="sm" color="warning" mdbWavesEffect>Edit</button></td>
+    <td><button (click)="removeGameById(el.id)" mdbBtn type="button" size="sm" color="danger" mdbWavesEffect>Delete</button></td>
+  </tr>
+  </tbody>
+</table>
 

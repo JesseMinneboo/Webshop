@@ -11,20 +11,7 @@ export class ShoppingcartComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  gamesInList: Array<Game> = [
-    new Game('A hat in time', 'A Hat in Time is a cute-as-heck 3D platformer featuring a little girl who ' +
-      'stitches hats for wicked powers! Freely explore giant worlds and recover Time Pieces to travel to new heights!', 59.99,
-      'https://www.hrkgame.com/media/games/.thumbnails/header_VrIOgDm.jpg/header_VrIOgDm-460x215.jpg'),
-    new Game('A hat in time', 'A Hat in Time is a cute-as-heck 3D platformer featuring a little girl who ' +
-      'stitches hats for wicked powers! Freely explore giant worlds and recover Time Pieces to travel to new heights!', 59.99,
-      'https://www.hrkgame.com/media/games/.thumbnails/header_VrIOgDm.jpg/header_VrIOgDm-460x215.jpg'),
-    new Game('A hat in time', 'A Hat in Time is a cute-as-heck 3D platformer featuring a little girl who ' +
-      'stitches hats for wicked powers! Freely explore giant worlds and recover Time Pieces to travel to new heights!', 59.99,
-      'https://www.hrkgame.com/media/games/.thumbnails/header_VrIOgDm.jpg/header_VrIOgDm-460x215.jpg'),
-    new Game('A hat in time', 'A Hat in Time is a cute-as-heck 3D platformer featuring a little girl who ' +
-      'stitches hats for wicked powers! Freely explore giant worlds and recover Time Pieces to travel to new heights!', 59.99,
-      'https://www.hrkgame.com/media/games/.thumbnails/header_VrIOgDm.jpg/header_VrIOgDm-460x215.jpg')
-  ];
+  gamesInList: Array<Game> = [];
 
   ngOnInit() {
   }

@@ -9,7 +9,6 @@ export class GameService {
 
   constructor(private http: HttpClient) {}
 
-
   getFourGames(gameType: GameType){
     switch (gameType) {
       case GameType.ALL:
@@ -23,7 +22,6 @@ export class GameService {
     }
   }
 
-
   fetchGames(type: string) {
    return this.http.get<GameInterface>('http://localhost:9000/api/game/' + type)
       .pipe(
@@ -34,6 +32,10 @@ export class GameService {
           }
           return gamesArray;
         }));
+  }
+
+  deleteGameById(id: number){
+    return this.http.delete('http://localhost:9000/api/game/'+ id +'/delete');
   }
 
 
