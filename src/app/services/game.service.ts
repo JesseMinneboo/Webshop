@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { GameInterface } from '../models/game.model';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Game, GameInterface} from '../models/game.model';
 import { map } from 'rxjs/operators';
 import { GameType } from './enums/gametype.enum';
 
@@ -42,6 +42,14 @@ export class GameService {
 
   getGameById(id: number) {
     return this.http.get<GameInterface>('http://localhost:9000/api/game/' + id);
+  }
+
+
+  //todo: finish add to shopping cart
+  addToShoppingCart(game: Game, userId: number) {
+    this.http.put('http://localhost:9000/api/cart/' + userId +'/add', {
+      params: new HttpParams().set('game_id', String(game.id))
+    });
   }
 
 
