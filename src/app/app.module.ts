@@ -17,6 +17,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import {HttpClientModule} from "@angular/common/http";
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { GameDetailsComponent } from './pages/store/game-details/game-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'store', component: StoreComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'store/:gameId', component: GameDetailsComponent },
   { path: '**', component: PagenotfoundComponent}
 ];
 
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     ShoppingcartComponent,
     AdminComponent,
     PagenotfoundComponent,
+    GameDetailsComponent,
   ],
   imports: [
     BrowserModule,

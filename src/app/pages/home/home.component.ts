@@ -47,4 +47,8 @@ export class HomeComponent implements OnInit {
   navigateToStore() {
     this.router.navigateByUrl('/store');
   }
+
+  goToGameDetails(name: string) {
+    this.router.navigateByUrl('/store/' + name );
+  }
 }

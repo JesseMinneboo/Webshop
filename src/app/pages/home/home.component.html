@@ -15,14 +15,14 @@
 
       <div class="view overlay">
         <img class="card-img-top" src="{{ game.imagePath }}" alt="Card image cap">
-        <a href="#!"><div class="mask rgba-white-slight"></div></a>
+        <a routerLink="/store/{{game.id}}"><div class="mask rgba-white-slight"></div></a>
       </div>
 
       <div class="card-body">
         <h4 class="card-title">{{ game.name }}</h4>
         <p class="card-text max-lines-4">{{ game.description }}</p>
         <div class="row justify-content-around">
-          <a href="#" class="btn btn-primary">Buy</a>
+          <a routerLink="/store/{{game.id}}" class="btn btn-primary">Buy</a>
           <div class="d-flex align-items-center">
             <h5 *ngIf="game.price > 0.0">${{ game.price }}</h5>
             <h5 *ngIf="game.price == 0.0">FREE</h5>

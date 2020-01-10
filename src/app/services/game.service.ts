@@ -7,6 +7,8 @@ import { GameType } from './enums/gametype.enum';
 @Injectable({providedIn: 'root'})
 export class GameService {
 
+  //todo: fetch all games one time not in multiple classes -> less api calls
+
   constructor(private http: HttpClient) {}
 
   getFourGames(gameType: GameType){
@@ -34,8 +36,12 @@ export class GameService {
         }));
   }
 
-  deleteGameById(id: number){
+  deleteGameById(id: number) {
     return this.http.delete('http://localhost:9000/api/game/'+ id +'/delete');
+  }
+
+  getGameById(id: number) {
+    return this.http.get<GameInterface>('http://localhost:9000/api/game/' + id);
   }
 
 
