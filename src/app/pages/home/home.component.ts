@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Game} from '../../models/game.model';
+import {Game, IGame} from '../../services/game/game.model';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {GameService} from '../../services/game.service';
-import {GameType} from '../../services/enums/gametype.enum';
+import {GameService} from '../../services/game/game.service';
+import {GameType} from '../../services/game/gametype.enum';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +12,9 @@ import {GameType} from '../../services/enums/gametype.enum';
 })
 
 export class HomeComponent implements OnInit {
-  recentlyAdded: Game[] = [];
-  mostPopular: Game[] = [];
-  freeGames: Game[] = [];
+  newGames: IGame[] = [];
+  popularGames: IGame[] = [];
+  freeGames: IGame[] = [];
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -28,13 +28,13 @@ export class HomeComponent implements OnInit {
 
   getFourNewGames() {
     this.gameService.getFourGames(GameType.NEW).subscribe(response => {
-      this.recentlyAdded = response;
+      this.newGames = response;
     });
   }
 
   getFourPopularGames() {
    this.gameService.getFourGames(GameType.POPULAR).subscribe(response => {
-     this.mostPopular = response;
+     this.popularGames = response;
    })
   }
 
@@ -44,11 +44,4 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  navigateToStore() {
-    this.router.navigateByUrl('/store');
-  }
-
-  goToGameDetails(name: string) {
-    this.router.navigateByUrl('/store/' + name );
-  }
 }

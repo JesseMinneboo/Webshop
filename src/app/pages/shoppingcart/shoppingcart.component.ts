@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Game} from '../../models/game.model';
+import {Game} from '../../services/game/game.model';
 import {Router} from "@angular/router";
 
 @Component({

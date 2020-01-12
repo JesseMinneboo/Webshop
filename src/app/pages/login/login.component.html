@@ -1,0 +1,47 @@
+<!-- Default form login -->
+<form #loginForm="ngForm"
+      (ngSubmit)="onLoginSubmit(loginForm)"
+      class="text-center border border-light p-5"
+>
+
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input type="email"
+         id="defaultLoginFormEmail"
+         class="form-control mb-4"
+         placeholder="E-mail"
+         ngModel
+         name="email"
+         required
+  >
+
+  <!-- Password -->
+  <input type="password"
+         id="defaultLoginFormPassword"
+         class="form-control mb-4"
+         placeholder="Password"
+         required
+         name="password"
+         ngModel
+         minlength="6"
+  >
+
+  <!-- Sign in button -->
+  <button mdbBtn
+          color="primary"
+          block="true"
+          class="my-4"
+          type="submit"
+          [disabled]="!loginForm.valid"
+  >
+    Sign in
+  </button>
+
+  <!-- Register -->
+  <p>Not a member?
+    <a routerLink="/register">Register</a>
+  </p>
+
+</form>
+<!-- Default form login -->

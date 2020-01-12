@@ -1,0 +1,29 @@
+.card {
+  margin: 2vh 0;
+}
+
+.card-img-top {
+  background-position: center;
+  background-size: cover;
+  height: 140px;
+}
+
+.max-lines-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 2.5ex;
+  height: 7.5ex; /* 2.5ex for each visible line */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* number of lines to show */
+}
+
+.max-lines-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 2.5ex;
+  height: 2.5ex; /* 2.5ex for each visible line */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1; /* number of lines to show */
+}

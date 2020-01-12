@@ -21,8 +21,15 @@
     <!-- Links -->
 
     <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item"><a class="nav-link"><app-login></app-login></a></li>
-      <li class="nav-item"><a class="nav-link"><app-register></app-register></a></li>
+
+      <li routerLink="/login" class="nav-item">
+        <a class="nav-link"><button size="sm" type="button" mdbBtn color="primary" mdbWavesEffect>Login</button></a>
+      </li>
+
+      <li routerLink="/register" class="nav-item">
+        <a class="nav-link"><button size="sm" type="button" mdbBtn color="primary" mdbWavesEffect>Register</button></a>
+      </li>
+
     </ul>
   </links>
   <!-- Collapsible content -->

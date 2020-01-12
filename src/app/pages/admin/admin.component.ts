@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {GameService} from "../../services/game.service";
-import {GameType} from "../../services/enums/gametype.enum";
-import {GameInterface} from "../../models/game.model";
+import {GameService} from "../../services/game/game.service";
+import {GameType} from "../../services/game/gametype.enum";
+import {IGame} from "../../services/game/game.model";
 
 @Component({
   selector: 'app-admin',
@@ -11,7 +11,7 @@ import {GameInterface} from "../../models/game.model";
 
 export class AdminComponent implements OnInit {
   headElements = ['Name', 'Price', 'Image path', 'Edit', "Remove"];
-  elements: GameInterface[] = [];
+  elements: IGame[] = [];
 
   constructor(private gameService: GameService) { }
 

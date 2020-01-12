@@ -1,7 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Game, GameInterface} from "../../models/game.model";
+import {Game, IGame} from "../../services/game/game.model";
 import {map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
+import {GameService} from "../../services/game/game.service";
 
 @Component({
   selector: 'app-store',
@@ -13,7 +14,9 @@ export class StoreComponent implements OnInit {
   allGames: Game[] = [];
   isFetching = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private gameService: GameService) { }
+
+  //todo: maybe some array logic so that i dont have to api call all the time
 
   ngOnInit() {
     if(this.isFetching) {
@@ -25,39 +28,22 @@ export class StoreComponent implements OnInit {
   }
 
   getAllGames() {
-    this.http.get<GameInterface>('http://localhost:9000/api/game/all')
-      .pipe(
-        map(responseData => {
-          const gamesArray: GameInterface[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }))
-      .subscribe(games => {
-        this.allGames = games;
-      })
+    this.gameService.findAllGames().subscribe(response => {
+      this.allGames = response;
+    })
   }
 
   getSearchedGame(title: ElementRef) {
-    this.http.get<GameInterface>('http://localhost:9000/api/game/find?searchResult=' + title)
-      .pipe(
-        map(responseData => {
-          const gamesArray: GameInterface[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }))
-      .subscribe(games => {
-        this.allGames = games;
-      })
+    this.gameService.findGamesByTitle(title).subscribe(response => {
+      this.allGames = response;
+    })
   }
 
   onKeyPress() {
     this.isFetching = true;
     this.deleteGamesArray();
     this.getSearchedGame(this.gameNameInput.nativeElement.value);
+    console.log(this.allGames)
     this.ngOnInit();
   }
 

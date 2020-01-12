@@ -19,31 +19,10 @@
 
 </div>
 
-<!-- All GAMES ADDED-->
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-3 push-down-up-2-5" *ngFor="let game of allGames">
-      <div class="card">
-
-        <div class="view overlay">
-          <img class="card-img-top" src="{{ game.imagePath }}" alt="Card image cap">
-          <a href="#!"><div class="mask rgba-white-slight"></div></a>
-        </div>
-
-        <div class="card-body">
-          <h4 class="card-title">{{ game.name }}</h4>
-          <p class="card-text max-lines-4">{{ game.description }}</p>
-          <div class="row justify-content-around">
-            <a href="#" class="btn btn-primary">Buy</a>
-            <div class="d-flex align-items-center">
-              <h5 *ngIf="game.price > 0.0">${{ game.price }}</h5>
-              <h5 *ngIf="game.price == 0.0">FREE</h5>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <div class="row" >
+    <div class="col-xs-12 col-sm-3" *ngFor="let game of allGames">
+      <app-game-card  [gameElement]="game"></app-game-card>
     </div>
   </div>
 </div>
-<!-- END ALL GAMES  -->

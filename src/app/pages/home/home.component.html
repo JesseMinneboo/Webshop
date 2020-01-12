@@ -1,5 +1,4 @@
-<!-- RECENTLY ADDED HEADER-->
-<div class="container push-down-5">
+<div class="container push-down-5" *ngIf="newGames.length > 0">
   <div class="row justify-content-start align-items-end">
     <div class="col-xs-12">
       <p class="highlight-header">
@@ -7,117 +6,49 @@
     </div>
   </div>
 </div>
-<!-- END RECENTLY ADDED HEADER -->
-<!-- RECENTLY ADDED-->
-<div class="row">
-  <div class="col-xs-12 col-sm-3" *ngFor="let game of recentlyAdded">
-    <div class="card">
 
-      <div class="view overlay">
-        <img class="card-img-top" src="{{ game.imagePath }}" alt="Card image cap">
-        <a routerLink="/store/{{game.id}}"><div class="mask rgba-white-slight"></div></a>
-      </div>
-
-      <div class="card-body">
-        <h4 class="card-title">{{ game.name }}</h4>
-        <p class="card-text max-lines-4">{{ game.description }}</p>
-        <div class="row justify-content-around">
-          <a routerLink="/store/{{game.id}}" class="btn btn-primary">Buy</a>
-          <div class="d-flex align-items-center">
-            <h5 *ngIf="game.price > 0.0">${{ game.price }}</h5>
-            <h5 *ngIf="game.price == 0.0">FREE</h5>
-          </div>
-        </div>
-      </div>
-
-    </div>
+<div class="row" >
+  <div class="col-xs-12 col-sm-3" *ngFor="let game of newGames">
+    <app-game-card  [gameElement]="game"></app-game-card>
   </div>
 </div>
-<!-- END RECENTLY ADDED  -->
 
-
-<!-- MOST POPULAR HEADER-->
-<div class="container push-down-5">
+<div class="container push-down-5" *ngIf="popularGames.length > 0">
   <div class="row justify-content-between align-items-end">
     <div class="col-xs-12">
       <p class="highlight-header">Most Popular</p>
     </div>
   </div>
 </div>
-<!-- END MOST POPULAR HEADER-->
-<!-- MOST POPULAR -->
-<div class="row">
-  <div class="col-xs-12 col-sm-3" *ngFor="let game of mostPopular">
-    <div class="card">
 
-      <div class="view overlay">
-        <img class="card-img-top" src="{{ game.imagePath }}" alt="Card image cap">
-        <a href="#!"><div class="mask rgba-white-slight"></div></a>
-      </div>
-
-      <div class="card-body">
-        <h4 class="card-title">{{ game.name }}</h4>
-        <p class="card-text max-lines-4">{{ game.description }}</p>
-        <div class="row justify-content-around">
-          <a href="#" class="btn btn-primary">Buy</a>
-          <div class="d-flex align-items-center">
-            <h5 *ngIf="game.price > 0.0">${{ game.price }}</h5>
-            <h5 *ngIf="game.price == 0.0">FREE</h5>
-          </div>
-        </div>
-      </div>
-
-    </div>
+<div class="row" >
+  <div class="col-xs-12 col-sm-3" *ngFor="let game of popularGames">
+    <app-game-card  [gameElement]="game"></app-game-card>
   </div>
 </div>
-<!-- END MOST POPULAR  -->
 
 
-<!-- FREE GAMES HEADER-->
 <div class="container push-down-5" *ngIf="freeGames.length > 0">
   <div class="row justify-content-between align-items-end">
-
     <div class="col-xs-12">
       <p class="highlight-header">Free games</p>
     </div>
   </div>
 </div>
-<!-- END FREE GAMES HEADER-->
-<!-- FREE GAMES -->
-<div class="row">
+
+<div class="row" >
   <div class="col-xs-12 col-sm-3" *ngFor="let game of freeGames">
-    <div class="card">
-
-      <div class="view overlay">
-        <img class="card-img-top" src="{{ game.imagePath }}" alt="Card image cap">
-        <a href="#!"><div class="mask rgba-white-slight"></div></a>
-      </div>
-
-      <div class="card-body">
-        <h4 class="card-title">{{ game.name }}</h4>
-        <p class="card-text max-lines-4">{{ game.description }}</p>
-        <div class="row justify-content-around">
-          <a href="#" class="btn btn-primary">Buy</a>
-          <div class="d-flex align-items-center">
-            <h5>FREE</h5>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <app-game-card  [gameElement]="game"></app-game-card>
   </div>
 </div>
-<!-- END FREE GAMES  -->
 
 
-<!-- BEGIN JUMBOTRON -->
 <mdb-card style="background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient1.jpg')" class="push-down-5">
   <div class=" text-white text-center py-8 px-4 my-5">
     <div>
       <h2 class="card-title h1-responsive pt-3 mb-2 font-bold"><strong>Browse</strong></h2>
       <p>Explore our catalog for your next favorite game!</p>
-      <a (click)="navigateToStore()"
-        routerLink="store"
+      <a routerLink="/store"
          mdbBtn color="white"
          outline="true"
          class="waves-light"
@@ -125,5 +56,4 @@
     </div>
   </div>
 </mdb-card>
-<!-- END JUMBOTRON -->
 
