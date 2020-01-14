@@ -33,13 +33,19 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(postData).subscribe(response => {
       this.isLoading = false;
       this.authService.setCurrentUser(response);
-      this.router.navigateByUrl('/home');
+
+      if(response != null){
+        form.reset();
+        location.reload();
+        // todo: route back to home and reload the page somehow
+      }else {
+        this.error = 'This is not a known account. Please try again...'
+      }
+
     }, error => {
       console.log(error);
       this.isLoading = false;
       this.error = error;
     })
-
-    form.reset();
   }
 }

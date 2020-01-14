@@ -19,6 +19,7 @@ import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.compon
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { GameDetailsComponent } from './pages/store/game-details/game-details.component';
 import { GameCardComponent } from './shared/game-card/game-card.component';
+import { AddComponent } from './pages/admin/add/add.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'admin/add', component: AddComponent },
 
   { path: '**', component: PagenotfoundComponent},
 ];
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
     PagenotfoundComponent,
     GameDetailsComponent,
     GameCardComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,

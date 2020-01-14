@@ -1,6 +1,6 @@
 import { ElementRef, Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { IGame } from './game.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Game, IGame} from './game.model';
 import { map } from 'rxjs/operators';
 import { GameType } from './gametype.enum';
 
@@ -58,6 +58,20 @@ export class GameService {
           }
           return gamesArray;
         }));
+  }
+
+  addGame(game: {name: string, imagePath: string, description: string, price: number}) {
+    let body = new URLSearchParams();
+    body.set('name', game.name);
+    body.set('image_path', game.imagePath);
+    body.set('description', game.description);
+    body.set('price', String(game.price));
+
+    let options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    };
+
+    return this.http.post<IGame>('http://localhost:9000/api/game/add', body.toString(), options);
   }
 
   deleteGameById(id: number) {

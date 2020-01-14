@@ -30,12 +30,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  reloadHeader() {
-    this.ngOnInit();
-  }
-
   logout() {
     this.authService.deleteCurrentUser();
+    location.reload();
   }
 
   getCurrentRoute() {

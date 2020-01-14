@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {GameService} from '../../../services/game/game.service';
+
+@Component({
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.scss']
+})
+export class AddComponent implements OnInit {
+  isLoading = false;
+
+  constructor(private gameService: GameService) { }
+
+  ngOnInit() {
+  }
+
+  onAddGame(form: NgForm) {
+    this.isLoading = true;
+    const name = form.value.title;
+    const imagePath = form.value.image;
+    const description = form.value.description;
+    const price = form.value.price;
+
+    const postData = {
+      name: name,
+      imagePath: imagePath,
+      description: description,
+      price: price
+    }
+
+  this.gameService.addGame(postData).subscribe(response => {
+    this.isLoading = false;
+    console.log(response);
+  })
+  }
+}
