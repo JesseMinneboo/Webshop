@@ -36,11 +36,11 @@ import {FormsModule} from "@angular/forms";
     AuthService,
     MDBRootModule,
     CommonModule,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true
-    // }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 
