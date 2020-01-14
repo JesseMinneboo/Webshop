@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {AuthService} from "../../services/auth/auth.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-register',
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       password: password
     }
 
-    this.authService.signUp(postData).subscribe(response => {
+    this.authService.registerUser(postData).subscribe(response => {
       console.log(response);
       this.isLoading = false;
     }, error => {

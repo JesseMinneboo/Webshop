@@ -1,3 +1,7 @@
+<div class="alert alert-danger error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+
 <!-- Default form login -->
 <form #loginForm="ngForm"
       (ngSubmit)="onLoginSubmit(loginForm)"
@@ -14,6 +18,7 @@
          ngModel
          name="email"
          required
+         email
   >
 
   <!-- Password -->
@@ -27,15 +32,27 @@
          minlength="6"
   >
 
-  <!-- Sign in button -->
+  <!-- Sign up button -->
   <button mdbBtn
           color="primary"
           block="true"
           class="my-4"
           type="submit"
           [disabled]="!loginForm.valid"
+          *ngIf="!isLoading"
   >
     Sign in
+  </button>
+
+  <button mdbBtn
+          color="primary"
+          type="submit"
+          block="true"
+          class="my-4"
+          disabled
+          *ngIf="isLoading">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
   </button>
 
   <!-- Register -->
