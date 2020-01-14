@@ -5,11 +5,12 @@ import {LocalStorageService} from '../services/cookies/localstorage.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  currentUser: User = null;
-  isLoggedIn = false;
+  authUser: User = null;
+  authToken: string;
+  setAuthenticated = false;
 
-  constructor(private http: HttpClient,
-              private localStorageService: LocalStorageService) {
+  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+    this.authToken = '';
   }
 
   registerUser(data: IUser) {
@@ -38,19 +39,28 @@ export class AuthService {
     return this.http.post<User>('http://localhost:9000/api/user/login', body.toString(), options);
   }
 
-  setCurrentUser(user: User) {
-    this.currentUser = user;
+  setAuthUser(user: User) {
+    this.authUser = user;
     this.localStorageService.setLocal('user', user);
-    this.isLoggedIn = true;
+    this.setAuthenticated = true;
   }
 
-  getCurrentUser() {
-    return this.currentUser;
+  getAuthUser() {
+    return this.authUser;
   }
 
   deleteCurrentUser() {
-    this.currentUser = null
+    this.authUser = null
     this.localStorageService.removeLocal('user');
-    this.isLoggedIn = false;
+    this.setAuthenticated = false;
   }
+
+  setAuthToken(token: string){
+    this.authToken = token;
+  }
+
+  getAuthToken() {
+    return this.authToken;
+  }
+
 }

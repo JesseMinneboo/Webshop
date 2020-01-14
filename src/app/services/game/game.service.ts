@@ -1,15 +1,17 @@
-import { ElementRef, Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Game, IGame} from './game.model';
+import { ElementRef, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { IGame } from './game.model';
 import { map } from 'rxjs/operators';
 import { GameType } from './gametype.enum';
+import { AuthService } from "../../authentication/auth.service";
 
 @Injectable({providedIn: 'root'})
 export class GameService {
 
   //todo: fetch all games one time not in multiple classes -> less api calls
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private authService: AuthService) {}
 
   getFourGames(gameType: GameType){
     switch (gameType) {
@@ -25,7 +27,7 @@ export class GameService {
   }
 
   findGamesByGameType(type: string) {
-   return this.http.get<IGame>('http://localhost:9000/api/game/' + type)
+    return this.http.get<IGame>('http://localhost:9000/api/game/' + type)
       .pipe(
         map(responseData => {
           const gamesArray: IGame[] = [];
@@ -34,6 +36,7 @@ export class GameService {
           }
           return gamesArray;
         }));
+
   }
 
   findGamesByTitle(searchString: ElementRef) {

@@ -20,8 +20,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     console.log(JSON.parse(this.localStorageService.getLocal('user')));
     let newUser: User = JSON.parse(this.localStorageService.getLocal('user'));
-    this.authService.setCurrentUser(newUser);
-    this.user = this.authService.getCurrentUser();
+    this.authService.setAuthUser(newUser);
+    this.user = this.authService.getAuthUser();
 
     if(newUser != null){
       this.isLoggedIn = true;

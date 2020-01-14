@@ -14,7 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { StoreComponent } from './pages/store/store.component';
 import { ShoppingcartComponent } from './pages/shoppingcart/shoppingcart.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { GameDetailsComponent } from './pages/store/game-details/game-details.component';
@@ -51,6 +51,7 @@ const appRoutes: Routes = [
     GameCardComponent,
     AddComponent,
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
 
     this.authService.loginUser(postData).subscribe(response => {
       this.isLoading = false;
-      this.authService.setCurrentUser(response);
+      this.authService.setAuthUser(response);
+      this.authService.setAuthToken(this.authService.getAuthUser().jwt);
 
       if(response != null){
         form.reset();
