@@ -12,16 +12,12 @@
       <table class="table  table-responsive-md table-striped text-center">
         <tr>
           <th class="text-center">Title</th>
-          <th class="text-center">Description</th>
           <th class="text-center">Price</th>
           <th class="text-center">Remove</th>
         </tr>
         <tr *ngFor="let game of gamesInList">
           <td>
             <span contenteditable="true">{{ game.name }}</span>
-          </td>
-          <td class="description">
-            <span contenteditable="true">{{ game.description }}</span>
           </td>
           <td>
             <span contenteditable="true">{{ game.price }}</span>

@@ -9,6 +9,7 @@ import {GameService} from '../../../services/game/game.service';
 })
 export class AddComponent implements OnInit {
   isLoading = false;
+  error: string = null;
 
   constructor(private gameService: GameService) { }
 
@@ -31,7 +32,10 @@ export class AddComponent implements OnInit {
 
   this.gameService.addGame(postData).subscribe(response => {
     this.isLoading = false;
-    console.log(response);
+    if(response != null){
+      form.reset();
+      this.error = 'The game has been added!'
+    }
   })
   }
 }
