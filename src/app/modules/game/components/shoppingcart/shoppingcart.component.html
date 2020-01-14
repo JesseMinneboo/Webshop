@@ -1,0 +1,28 @@
+<!-- Editable table -->
+<div class="card push-down-5">
+    <div id="table" class="table-editable">
+
+      <table class="table  table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Title</th>
+          <th class="text-center">Price</th>
+          <th class="text-center">Remove</th>
+        </tr>
+        <tr *ngFor="let game of gamesInList">
+          <td>
+            <span contenteditable="true">{{ game.name }}</span>
+          </td>
+          <td>
+            <span contenteditable="true">{{ game.price }}</span>
+          </td>
+          <td>
+            <span class="table-remove">
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+</div>
+<!-- Editable table -->
+
+<!--(click)="remove(id)-->
