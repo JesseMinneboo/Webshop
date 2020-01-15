@@ -36,6 +36,8 @@ const appRoutes: Routes = [
   { path: '**', component: PagenotfoundComponent},
 ];
 
+// todo: agngular guard
+
 @NgModule({
   declarations: [
     AppComponent,
