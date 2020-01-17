@@ -1,92 +1,101 @@
 import { ElementRef, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpParams} from '@angular/common/http';
 import { IGame } from '../../../models/game.model';
 import { map } from 'rxjs/operators';
 import { GameType } from '../types/gametype.enum';
-import { AuthService } from "../../auth/services/auth.service";
+import {ApiService} from "../../shared/services/api.service";
 
 @Injectable({providedIn: 'root'})
 export class GameService {
+  private readonly PREFIX = '/product';
 
-  //todo: fetch all games one time not in multiple classes -> less api calls
-
-  constructor(private http: HttpClient,
-              private authService: AuthService) {}
+  constructor(private api: ApiService) {}
 
   getFourGames(gameType: GameType){
     switch (gameType) {
       case GameType.ALL:
-        return this.findGamesByGameType('all');
+        return this.getGamesByType('all');
       case GameType.FREE:
-        return this.findGamesByGameType('free');
+        return this.getGamesByType('free');
       case GameType.NEW:
-        return this.findGamesByGameType('new');
+        return this.getGamesByType('new');
       case GameType.POPULAR:
-        return this.findGamesByGameType('popular')
+        return this.getGamesByType('popular')
     }
   }
 
-  findGamesByGameType(type: string) {
-    return this.http.get<IGame>('http://localhost:9000/api/game/' + type)
-      .pipe(
-        map(responseData => {
-          const gamesArray: IGame[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }));
-
+  getGamesByType(type: string) {
+    return this.api.get({
+      auth: false,
+      endpoint: this.PREFIX + '/' + type
+    }).pipe(
+      map(responseData => {
+        const gamesArray: IGame[] = [];
+        for (const key in responseData) {
+          gamesArray.push({...responseData[key]});
+        }
+        return gamesArray;
+      }));
   }
 
-  findGamesByTitle(searchString: ElementRef) {
-    return this.http.get<IGame>('http://localhost:9000/api/game/find?searchString=' + searchString)
-      .pipe(
-        map(responseData => {
-          const gamesArray: IGame[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }));
+  getAllGames() {
+    return this.api.get({
+      auth: false,
+      endpoint: this.PREFIX + '/all'
+    }).pipe(
+      map(responseData => {
+        const gamesArray: IGame [] = [];
+        for (const key in responseData) {
+          gamesArray.push({ ...responseData[key]});
+        }
+        return gamesArray;
+      }));
   }
 
-  findAllGames() {
-    return this.http.get<IGame>('http://localhost:9000/api/game/all')
-      .pipe(
-        map(responseData => {
-          const gamesArray: IGame[] = [];
-          for (const key in responseData) {
-            gamesArray.push({ ...responseData[key]});
-          }
-          return gamesArray;
-        }));
-  }
-
-  addGame(game: {name: string, imagePath: string, description: string, price: number}) {
-    let body = new URLSearchParams();
-    body.set('name', game.name);
-    body.set('image_path', game.imagePath);
-    body.set('description', game.description);
-    body.set('price', String(game.price));
-
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-    };
-
-    return this.http.post<IGame>('http://localhost:9000/api/game/add', body.toString(), options);
-  }
-
-  deleteGameById(id: number) {
-    return this.http.delete('http://localhost:9000/api/game/'+ id +'/delete');
+  getGamesByTitle(searchString: ElementRef) {
+    return this.api.get({
+      auth: false,
+      endpoint: this.PREFIX + '/find?searchString=' + searchString
+    }).pipe(
+      map(responseData => {
+        const gamesArray: IGame[] = [];
+        for (const key in responseData) {
+          gamesArray.push({ ...responseData[key]});
+        }
+        return gamesArray;
+      }));
   }
 
   getGameById(id: number) {
-    return this.http.get<IGame>('http://localhost:9000/api/game/find/' + id);
+    return this.api.get({
+      auth: false,
+      endpoint: this.PREFIX + '/find/' + id
+    })
   }
 
-  clickOnGame(id: number) {
-    return this.http.put('http://localhost:9000/api/game/' + id + '/seen/add-game', {});
+  clickOnGame(id: number){
+    return this.api.put({
+      auth: false,
+      endpoint: this.PREFIX + '/' + id + '/seen/add'
+    })
   }
 
+  deleteGameById(id: number) {
+    return this.api.delete({
+      auth: true,
+      endpoint: this.PREFIX + '/' + id + '/delete'
+    })
+  }
+
+  addGame(name: string, description: string, price: string, imagePath: string) {
+      return this.api.post({
+        auth: true,
+        body: new HttpParams()
+          .set('name', name)
+          .set('description', description)
+          .set('price', price)
+          .set('image_path', imagePath),
+        endpoint: this.PREFIX + '/add'
+      })
+  }
 }

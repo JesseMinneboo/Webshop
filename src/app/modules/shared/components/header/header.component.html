@@ -1,5 +1,5 @@
 <!--Navbar IS NOT LOGGED IN-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white sticky-top" [containerInside]="true" *ngIf="!isLoggedIn">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white sticky-top" [containerInside]="true" *ngIf="!authService.isAuthenticated">
 
   <!-- Navbar brand -->
   <mdb-navbar-brand><a routerLink="home" class="navbar-brand">
@@ -38,7 +38,7 @@
 <!--/.Navbar-->
 
 <!--Navbar IS LOGGED IN-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="true" *ngIf="isLoggedIn">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="true" *ngIf="authService.isAuthenticated">
 
   <!-- Navbar brand -->
   <mdb-navbar-brand><a routerLink="home" class="navbar-brand">
@@ -61,9 +61,9 @@
       <!-- Dropdown -->
       <li class="nav-item dropdown" dropdown>
         <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <mdb-icon fas icon="user" class="logo-blue-color"></mdb-icon>{{user.email}}<span class="caret"></span></a>
+          <mdb-icon fas icon="user" class="logo-blue-color"></mdb-icon>{{authService.getAuthUser().getFullName()}}<span class="caret"></span></a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a *ngIf="user.role == 1" class="dropdown-item waves-light" mdbWavesEffect routerLink="admin">Admin page</a>
+          <a *ngIf="authService.getAuthUser().isAdmin()" class="dropdown-item waves-light" mdbWavesEffect routerLink="admin">Admin page</a>
           <a class="dropdown-item waves-light" mdbWavesEffect routerLink="cart">Shopping cart</a>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
         </div>

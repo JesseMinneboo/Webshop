@@ -16,7 +16,6 @@ export class StoreComponent implements OnInit {
 
   constructor(private gameService: GameService) { }
 
-  //todo: maybe some array logic so that i dont have to api call all the time
 
   ngOnInit() {
     if(this.isFetching) {
@@ -28,13 +27,13 @@ export class StoreComponent implements OnInit {
   }
 
   getAllGames() {
-    this.gameService.findAllGames().subscribe(response => {
+    this.gameService.getAllGames().subscribe(response => {
       this.allGames = response;
     })
   }
 
   getSearchedGame(title: ElementRef) {
-    this.gameService.findGamesByTitle(title).subscribe(response => {
+    this.gameService.getGamesByTitle(title).subscribe(response => {
       this.allGames = response;
     })
   }

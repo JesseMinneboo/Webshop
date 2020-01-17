@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { AuthService } from '../../services/auth.service';
-import {Router} from '@angular/router';
-import {HeaderComponent} from '../../../shared/components/header/header.component';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -13,41 +12,25 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   error: string = null;
 
-  constructor(private authService: AuthService,
-              private router: Router) {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  onLoginSubmit(form: NgForm) {
+  onLoginSubmit = async (form: NgForm): Promise<void> => {
     this.isLoading = true;
     const email = form.value.email;
     const password = form.value.password;
 
-    const postData = {
-      email: email,
-      password: password
+    await this.authService.login(email, password);
+
+    console.log(this.authService.getAuthUser());
+    console.log(this.authService.isAuthenticated);
+
+    if(this.authService.isAuthenticated) {
+      await this.router.navigateByUrl('home');
+      this.isLoading = false;
+    } else {
+      // todo: show error message;
     }
-
-    this.authService.loginUser(postData).subscribe(response => {
-      this.isLoading = false;
-      this.authService.setAuthUser(response);
-
-
-      if(response != null){
-        form.reset();
-        this.authService.setAuthToken(this.authService.getAuthUser().jwt);
-        location.reload();
-        // todo: route back to home and reload the page somehow
-      }else {
-        this.error = 'This is not a known account. Please try again...'
-      }
-
-    }, error => {
-      console.log(error);
-      this.isLoading = false;
-      this.error = error;
-    })
   }
 }

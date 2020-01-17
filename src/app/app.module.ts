@@ -5,18 +5,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HeaderComponent } from './modules/shared/components/header/header.component';
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HashLocationStrategy, LocationStrategy } from "@angular/common";
 import { AuthModule } from "./modules/auth/auth.module";
 import { AdminModule } from "./modules/admin/admin.module";
 import { GameModule } from "./modules/game/game.module";
 import { SharedModule } from "./modules/shared/shared.module";
 import { RouterModule } from "@angular/router";
+import {AuthInterceptor} from "./modules/shared/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent
+  ],
+
+  exports: [
+    HttpClientModule
   ],
 
   imports: [
@@ -35,6 +40,11 @@ import { RouterModule } from "@angular/router";
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
     }
   ],
 

@@ -1,66 +1,97 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {HttpParams} from "@angular/common/http";
 import {IUser, User} from '../../../models/user.model';
 import {LocalStorageService} from '../../shared/services/localstorage.service';
+import {catchError, retry, tap} from "rxjs/operators";
+import {of} from "rxjs";
+import {ApiService} from "../../shared/services/api.service";
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
-  authUser: User = null;
-  authToken: string;
-  setAuthenticated = false;
+  private readonly PREFIX = '/user';
 
-  constructor(private http: HttpClient, private localStorageService: LocalStorageService) {
+  public isAuthenticated = false;
+  private authUser: User;
+  private authToken: string;
+
+  constructor(private localStorageService: LocalStorageService, private api: ApiService) {
     this.authToken = '';
   }
 
-  registerUser(data: IUser) {
-    let body = new URLSearchParams();
-    body.set('email', data.email);
-    body.set('name', data.name);
-    body.set('surname', data.surname);
-    body.set('password', data.password);
+  login(email: string, password: string) {
+    return new Promise((resolve) => {
+      this.api.post({
+        auth: false,
+        body: new HttpParams()
+          .set('email', email)
+          .set('password', password),
+        endpoint: this.PREFIX + '/login'
+      })
+        .pipe(
+          retry(2),
+          catchError(() => of(this.setAuthenticated(false)))
+        ).subscribe((user: IUser) => {
+        this.setAuthUser(new User(user));
 
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-    };
+        this.setAuthToken(
+          this.getAuthUser().jwt
+        );
 
-    return this.http.post<User>('http://localhost:9000/api/user/register', body.toString(), options);
+        this.setAuthenticated(true);
+
+        resolve();
+      });
+    });
   }
 
-  loginUser(data: {email: string, password: string}) {
-    let body = new URLSearchParams();
-    body.set('email', data.email);
-    body.set('password', data.password);
+  register(email: string, name: string, surname: string, password: string) {
+    return new Promise((resolve) => {
+      this.api.post({
+        auth: false,
+        body: new HttpParams()
+          .set('email', email)
+          .set('name', name)
+          .set('surname', surname)
+          .set('password', password)
+          .set('role', 'USER'),
+        endpoint: this.PREFIX + '/register'
+      })
+        .pipe(
+          tap(data => console.log(data)),
+          retry(2),
+          catchError(() => of(this.setAuthenticated(false)))
+        ).subscribe((user: IUser) => {
+        resolve();
+      });
+    });
+  }
 
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-    };
+  logOutUser() {
+    this.authUser = null;
+    this.isAuthenticated = false;
+    this.authToken = null;
+  }
 
-    return this.http.post<User>('http://localhost:9000/api/user/login', body.toString(), options);
+  setAuthenticated(to: boolean) {
+    this.isAuthenticated = to;
   }
 
   setAuthUser(user: User) {
     this.authUser = user;
-    this.localStorageService.setLocal('user', user);
-    this.setAuthenticated = true;
   }
 
-  getAuthUser() {
+  getAuthUser(): User {
     return this.authUser;
   }
 
-  deleteCurrentUser() {
-    this.authUser = null
-    this.localStorageService.removeLocal('user');
-    this.setAuthenticated = false;
-  }
-
-  setAuthToken(token: string){
-    this.authToken = token;
-  }
-
-  getAuthToken() {
+  getAuthToken(): string {
     return this.authToken;
+  }
+
+  setAuthToken(token: string): void {
+    this.authToken = token;
   }
 
 }

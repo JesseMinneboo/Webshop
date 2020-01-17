@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Game, IGame} from '../../../../models/game.model';
+import {IGame} from '../../../../models/game.model';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {GameService} from '../../../game/services/game.service';
@@ -16,9 +16,7 @@ export class HomeComponent implements OnInit {
   popularGames: IGame[] = [];
   freeGames: IGame[] = [];
 
-  constructor(private http: HttpClient,
-              private router: Router,
-              private gameService: GameService) { }
+  constructor(private router: Router, private gameService: GameService) { }
 
   ngOnInit() {
     this.getFourNewGames();

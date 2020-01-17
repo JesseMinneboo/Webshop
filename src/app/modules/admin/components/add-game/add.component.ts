@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {GameService} from '../../../game/services/game.service';
+import {GameService} from "../../../game/services/game.service";
 
 @Component({
   selector: 'app-add',
@@ -23,19 +23,6 @@ export class AddComponent implements OnInit {
     const description = form.value.description;
     const price = form.value.price;
 
-    const postData = {
-      name: name,
-      imagePath: imagePath,
-      description: description,
-      price: price
-    }
-
-  this.gameService.addGame(postData).subscribe(response => {
-    this.isLoading = false;
-    if(response != null){
-      form.reset();
-      this.error = 'The game has been added!'
-    }
-  })
+    this.gameService.addGame(name, description, price, imagePath).subscribe();
   }
 }

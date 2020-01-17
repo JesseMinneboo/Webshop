@@ -4,8 +4,6 @@ import { LoginComponent } from "./components/login/login.component";
 import {MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
 import { CommonModule } from "@angular/common";
 import { AuthService } from "./services/auth.service";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { RouterModule } from "@angular/router";
 import { authRoutes } from "./auth.routes";
 import {FormsModule} from "@angular/forms";
@@ -36,11 +34,7 @@ import {FormsModule} from "@angular/forms";
     AuthService,
     MDBRootModule,
     CommonModule,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+
   ]
 })
 

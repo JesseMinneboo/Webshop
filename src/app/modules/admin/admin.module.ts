@@ -7,6 +7,7 @@ import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {adminRoutes} from "./admin.routes";
 
+
 @NgModule({
   declarations: [
     AdminComponent,
@@ -17,7 +18,8 @@ import {adminRoutes} from "./admin.routes";
 
   entryComponents: [],
 
-  providers: [],
+  providers: [
+  ],
   imports: [
     FormsModule,
     MDBBootstrapModule,
