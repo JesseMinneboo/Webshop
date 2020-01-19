@@ -6,12 +6,14 @@ import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {adminRoutes} from "./admin.routes";
+import { EditGameComponent } from './components/edit-game/edit-game.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    AddComponent
+    AddComponent,
+    EditGameComponent
   ],
 
   exports: [],

@@ -1,9 +1,8 @@
-import {Injectable, SkipSelf} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 interface IApiOptions {
-  auth?: boolean;
   endpoint?: string;
   body?: {
     headers?: HttpHeaders | {
@@ -21,7 +20,7 @@ interface IApiOptions {
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http:  HttpClient) { }
+  constructor(private http: HttpClient) { }
   private static readonly baseUrl = 'http://localhost:9000';
   private static readonly prefix = '/api';
 
@@ -69,8 +68,6 @@ export class ApiService {
 
   configureOptions = (options: IApiOptions): IApiOptions => {
     options = this.setOptionsDefaults(options);
-    options = this.setAuthHeaderIfNeeded(options);
-
     return options;
   }
 
@@ -80,7 +77,6 @@ export class ApiService {
 
   setOptionsDefaults = (options: IApiOptions): IApiOptions => {
     const defaultOptions: IApiOptions = {
-      auth: false,
       endpoint: '',
       body: {}
     };
@@ -89,13 +85,5 @@ export class ApiService {
   }
 
 
-  setAuthHeaderIfNeeded(options: IApiOptions): IApiOptions {
-    options.body.headers = {
-      auth: options.auth
-        ? 'true'
-        : 'false'
-    };
 
-    return options;
-  }
 }

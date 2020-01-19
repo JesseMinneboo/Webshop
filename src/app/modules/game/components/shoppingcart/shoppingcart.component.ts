@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Game} from '../../../../models/game.model';
 import {Router} from "@angular/router";
+import {LocalStorageService} from "../../../shared/services/localstorage.service";
 
 @Component({
   selector: 'app-shoppingcart',
@@ -9,15 +10,13 @@ import {Router} from "@angular/router";
 })
 export class ShoppingcartComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private localStorageService: LocalStorageService) { }
 
   gamesInList: Array<Game> = [];
 
   ngOnInit() {
+    console.log(JSON.parse(this.localStorageService.getLocal('shopping cart')));
+    this.gamesInList = JSON.parse(this.localStorageService.getLocal('shopping cart'));
   }
 
-
-  goToHome() {
-    this.router.navigateByUrl('/home')
-  }
 }

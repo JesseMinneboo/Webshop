@@ -12,7 +12,7 @@
     <th scope="row">{{el.name}}</th>
     <td>{{el.price}}</td>
     <td>{{el.imagePath}}</td>
-    <td><button mdbBtn type="button" size="sm" color="warning" mdbWavesEffect>Edit</button></td>
+    <td><button routerLink="/admin/edit-game/{{el.id}}" mdbBtn type="button" size="sm" color="warning" mdbWavesEffect>Edit</button></td>
     <td><button (click)="removeGameById(el.id)" mdbBtn type="button" size="sm" color="danger" mdbWavesEffect>Delete</button></td>
   </tr>
   </tbody>

@@ -33,8 +33,7 @@ import {FormsModule} from "@angular/forms";
   providers: [
     AuthService,
     MDBRootModule,
-    CommonModule,
-
+    CommonModule
   ]
 })
 

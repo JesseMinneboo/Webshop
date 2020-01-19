@@ -12,7 +12,7 @@ import { AdminModule } from "./modules/admin/admin.module";
 import { GameModule } from "./modules/game/game.module";
 import { SharedModule } from "./modules/shared/shared.module";
 import { RouterModule } from "@angular/router";
-import {AuthInterceptor} from "./modules/shared/interceptors/auth.interceptor";
+import {AuthInterceptor} from "./modules/auth/interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [

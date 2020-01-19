@@ -23,7 +23,6 @@ export class AuthService {
   login(email: string, password: string) {
     return new Promise((resolve) => {
       this.api.post({
-        auth: false,
         body: new HttpParams()
           .set('email', email)
           .set('password', password),
@@ -49,7 +48,6 @@ export class AuthService {
   register(email: string, name: string, surname: string, password: string) {
     return new Promise((resolve) => {
       this.api.post({
-        auth: false,
         body: new HttpParams()
           .set('email', email)
           .set('name', name)
@@ -72,6 +70,7 @@ export class AuthService {
     this.authUser = null;
     this.isAuthenticated = false;
     this.authToken = null;
+    location.reload();
   }
 
   setAuthenticated(to: boolean) {
