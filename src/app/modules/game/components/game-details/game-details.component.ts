@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Game, IGame} from '../../../../models/game.model';
+import {Game} from '../../../../models/game.model';
 import {GameService} from '../../services/game.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {LocalStorageService} from "../../../shared/services/localstorage.service";
+import {LocalStorageService} from '../../../shared/services/localstorage.service';
 
 @Component({
   selector: 'app-game-details',
@@ -12,6 +12,7 @@ import {LocalStorageService} from "../../../shared/services/localstorage.service
 export class GameDetailsComponent implements OnInit {
   shoppingCartArray: Game[] = [];
   game = new Game();
+  isLoading = true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private gameService: GameService,
@@ -23,19 +24,20 @@ export class GameDetailsComponent implements OnInit {
         this.game = response;
       });
     });
-
+    this.isLoading = false;
   }
 
+  // todo: add games to local storage
   addToCart(gameName: string) {
     this.shoppingCartArray = [];
     this.shoppingCartArray = JSON.parse(this.localStorageService.getLocal('shopping cart'));
 
-    if(this.shoppingCartArray.find(x => x.name = gameName)) {
-      console.log("You already have this game!")
+    if (this.shoppingCartArray.find(x => x.name = gameName)) {
+      console.log('You already have this game!');
     } else {
       this.shoppingCartArray.push(this.game);
       this.localStorageService.setLocal('shopping cart', this.shoppingCartArray);
-      console.log(this.shoppingCartArray.length)
+      console.log(this.shoppingCartArray.length);
     }
   }
 }

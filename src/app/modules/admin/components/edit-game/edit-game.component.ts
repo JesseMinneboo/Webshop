@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {GameService} from "../../../game/services/game.service";
-import {NgForm} from "@angular/forms";
-import {Game} from "../../../../models/game.model";
-import {ActivatedRoute, Params} from "@angular/router";
+import {GameService} from '../../../game/services/game.service';
+import {NgForm} from '@angular/forms';
+import {Game} from '../../../../models/game.model';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-game',
@@ -16,7 +16,8 @@ export class EditGameComponent implements OnInit {
   error: string = null;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private gameService: GameService) { }
+              private gameService: GameService,
+              private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((data: Params) => {
@@ -28,7 +29,7 @@ export class EditGameComponent implements OnInit {
   }
 
 
-  onEditGame = async(form: NgForm): Promise<void> => {
+  onEditGame = async (form: NgForm): Promise<void> => {
     this.isLoading = true;
     const name = form.value.title;
     const imagePath = form.value.image;
@@ -37,5 +38,6 @@ export class EditGameComponent implements OnInit {
 
     await this.gameService.editGame(this.currentGameId, name, description, price, imagePath);
     this.isLoading = false;
+    await this.router.navigateByUrl('home');
   }
 }

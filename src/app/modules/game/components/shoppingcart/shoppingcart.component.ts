@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Game} from '../../../../models/game.model';
-import {Router} from "@angular/router";
-import {LocalStorageService} from "../../../shared/services/localstorage.service";
+import {LocalStorageService} from '../../../shared/services/localstorage.service';
 
 @Component({
   selector: 'app-shoppingcart',

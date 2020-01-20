@@ -22,7 +22,7 @@
 <div class="container">
   <div class="row" >
     <div class="col-xs-12 col-sm-3" *ngFor="let game of allGames">
-      <app-game-card  [gameElement]="game"></app-game-card>
+      <app-game-card  [gameElement]="game" [isLoading]="isLoading"></app-game-card>
     </div>
   </div>
 </div>

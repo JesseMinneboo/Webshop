@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GameService} from "../../../game/services/game.service";
-import {Game, IGame} from "../../../../models/game.model";
+import {GameService} from '../../../game/services/game.service';
+import {IGame} from '../../../../models/game.model';
 
 @Component({
   selector: 'app-game-card',
@@ -9,6 +9,7 @@ import {Game, IGame} from "../../../../models/game.model";
 })
 export class GameCardComponent implements OnInit {
   @Input() gameElement: IGame;
+  @Input() isLoading = true;
 
   constructor(private gameService: GameService) { }
 
