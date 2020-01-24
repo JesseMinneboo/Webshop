@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Game, IGame} from '../../../../models/game.model';
+import {Game} from '../../../../models/game.model';
 import {GameService} from '../../services/game.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {LocalStorageService} from "../../../shared/services/localstorage.service";
@@ -11,10 +11,10 @@ import {AuthService} from "../../../auth/services/auth.service";
   styleUrls: ['./game-details.component.scss']
 })
 export class GameDetailsComponent implements OnInit {
-
   shoppingCartArray: Game[] = [];
   game = new Game();
   error: string;
+  isLoading = true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private gameService: GameService,
@@ -26,10 +26,9 @@ export class GameDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((data: Params) => {
       this.gameService.getGameById(data.gameId).subscribe(response => {
         this.game = response;
-        console.log(this.game.name);
       });
     });
-
+    this.isLoading = false;
   }
 
   addToCart() {
@@ -46,8 +45,6 @@ export class GameDetailsComponent implements OnInit {
     } else {
       this.error = 'You have to login to purchase games'
     }
-
-
   }
 
   gameExistsInArray (games: Game[], gameName: string) {
