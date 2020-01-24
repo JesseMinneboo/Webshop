@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Game, IGame} from '../../../../models/game.model';
 import {GameService} from '../../services/game.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {LocalStorageService} from "../../../shared/services/localstorage.service";
+import {AuthService} from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'app-game-details',
@@ -10,32 +11,51 @@ import {LocalStorageService} from "../../../shared/services/localstorage.service
   styleUrls: ['./game-details.component.scss']
 })
 export class GameDetailsComponent implements OnInit {
+
   shoppingCartArray: Game[] = [];
   game = new Game();
+  error: string;
 
   constructor(private activatedRoute: ActivatedRoute,
               private gameService: GameService,
-              private localStorageService: LocalStorageService) { }
+              private localStorageService: LocalStorageService,
+              private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((data: Params) => {
       this.gameService.getGameById(data.gameId).subscribe(response => {
         this.game = response;
+        console.log(this.game.name);
       });
     });
 
   }
 
-  addToCart(gameName: string) {
-    this.shoppingCartArray = [];
-    this.shoppingCartArray = JSON.parse(this.localStorageService.getLocal('shopping cart'));
+  addToCart() {
+    if (this.authService.isAuthenticated) {
+      this.shoppingCartArray = JSON.parse(this.localStorageService.getLocal('shopping cart'));
+      if(this.gameExistsInArray(this.shoppingCartArray, this.game.name)) {
+        this.error = 'You already have this game';
+      } else {
+        this.shoppingCartArray.push(this.game);
+        this.localStorageService.setLocal('shopping cart', this.shoppingCartArray);
+        this.router.navigateByUrl('/cart');
 
-    if(this.shoppingCartArray.find(x => x.name = gameName)) {
-      console.log("You already have this game!")
+      }
     } else {
-      this.shoppingCartArray.push(this.game);
-      this.localStorageService.setLocal('shopping cart', this.shoppingCartArray);
-      console.log(this.shoppingCartArray.length)
+      this.error = 'You have to login to purchase games'
     }
+
+
+  }
+
+  gameExistsInArray (games: Game[], gameName: string) {
+    for (let i = 0; i < games.length; i++) {
+      if (games[i].name == gameName) {
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -1,28 +1,41 @@
-<!-- Editable table -->
-<div class="card push-down-5">
-    <div id="table" class="table-editable">
+<div class="row push-down-5">
+  <div class="col-md-4">
 
-      <table class="table  table-responsive-md table-striped text-center">
-        <tr>
-          <th class="text-center">Title</th>
-          <th class="text-center">Price</th>
-          <th class="text-center">Remove</th>
-        </tr>
-        <tr *ngFor="let game of gamesInList">
-          <td>
-            <span contenteditable="true">{{ game.name }}</span>
-          </td>
-          <td>
-            <span contenteditable="true">{{ game.price }}</span>
-          </td>
-          <td>
-            <span class="table-remove">
-            </span>
-          </td>
-        </tr>
-      </table>
+    <div class="jumbotron">
+      <h2>Your total is: ${{getTotalPrice()}}</h2>
+      <a routerLink="/checkout" mdbBtn color="primary" size="sm" href="#" role="button" mdbWavesEffect>Checkout</a>
+      <a routerLink="/store" mdbBtn color="primary" size="sm" href="#" role="button" mdbWavesEffect>Continue Shopping</a>
     </div>
-</div>
-<!-- Editable table -->
 
-<!--(click)="remove(id)-->
+  </div>
+  <div class="col-md-8">
+
+    <div class="card">
+      <div id="table" class="table-editable">
+
+        <table class="table  table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Title</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Remove</th>
+          </tr>
+          <tr *ngFor="let game of gamesInList">
+            <td>
+              <span contenteditable="true">{{ game.name }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ game.price }}</span>
+            </td>
+            <td>
+            <span class="table-remove">
+              <button (click)="removeGameByName(game.name)" style="margin: 0" mdbBtn color="danger" size="sm" mdbWavesEffect>Remove</button>
+            </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+

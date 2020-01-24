@@ -10,6 +10,9 @@
       <!-- Featured image -->
       <div class="view overlay waves-light">
         <img src="{{game.imagePath}}" class="img-fluid" alt="{{game.name}}">
+        <div class="alert alert-danger error" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
       </div>
 
     </div>
@@ -23,7 +26,7 @@
       <p class="font-weight-normal">{{game.description}}</p>
       <p class="font-weight-normal">${{game.price}}</p>
 
-      <a (click)="addToCart(game)" mdbBtn color="success" mdbWavesEffect>Add to cart</a>
+      <a  (click)="addToCart()" mdbBtn color="success" mdbWavesEffect>Add to cart</a>
 
     </div>
     <!-- Grid column -->
