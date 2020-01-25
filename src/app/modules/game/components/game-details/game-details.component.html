@@ -1,0 +1,42 @@
+<!-- News jumbotron -->
+<div class="jumbotron text-center p-4" style="margin-top: 15vh">
+
+  <div *ngIf="isLoading" class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <!-- Grid row -->
+  <div *ngIf="!isLoading" class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+      <!-- Featured image -->
+      <div class="view overlay waves-light">
+        <img src="{{game.imagePath}}" class="img-fluid" alt="{{game.name}}">
+        <div class="alert alert-danger error" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+      <h4 class="h4 mb-4">{{game.name}}</h4>
+
+      <p class="font-weight-normal">{{game.description}}</p>
+      <p class="font-weight-normal">${{game.price}}</p>
+
+      <a  (click)="addToCart()" mdbBtn color="success" mdbWavesEffect>Add to cart</a>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+</div>
+<!-- News jumbotron -->
