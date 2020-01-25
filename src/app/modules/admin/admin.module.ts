@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
-import {AdminComponent} from "./components/admin-panel/admin.component";
-import {AddComponent} from "./components/add-game/add.component";
+import {AdminComponent} from "./pages/admin-panel/admin.component";
+import {AddComponent} from "./pages/add-game/add.component";
 import {FormsModule} from "@angular/forms";
 import {MDBBootstrapModule} from "angular-bootstrap-md";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {adminRoutes} from "./admin.routes";
-import { EditGameComponent } from './components/edit-game/edit-game.component';
+import { EditGameComponent } from './pages/edit-game/edit-game.component';
 
 
 @NgModule({

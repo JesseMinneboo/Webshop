@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 import {MDBBootstrapModule, MDBRootModule} from 'angular-bootstrap-md';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';

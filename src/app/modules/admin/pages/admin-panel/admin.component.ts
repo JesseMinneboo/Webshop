@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameService} from "../../../game/services/game.service";
 import {GameType} from "../../../game/types/gametype.enum";
-import {IGame} from "../../../../models/game.model";
+import {IGame} from "../../../game/models/game.model";
 
 @Component({
   selector: 'app-admin',

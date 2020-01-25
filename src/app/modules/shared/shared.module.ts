@@ -3,9 +3,9 @@ import { RouterModule } from "@angular/router";
 import { sharedRoutes } from "./shared.routes";
 import {MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
 import { CommonModule } from "@angular/common";
-import { PagenotfoundComponent } from "./components/pagenotfound/pagenotfound.component";
+import { PagenotfoundComponent } from "./pages/pagenotfound/pagenotfound.component";
 import { GameModule } from "../game/game.module";
-import { HomeComponent } from "./components/home/home.component";
+import { HomeComponent } from "./pages/home/home.component";
 import { FormsModule } from "@angular/forms";
 
 @NgModule({

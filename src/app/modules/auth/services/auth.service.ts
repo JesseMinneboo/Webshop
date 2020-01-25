@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import {HttpParams} from "@angular/common/http";
-import {IUser, User} from '../../../models/user.model';
+import {IUser, User} from '../models/user.model';
 import {LocalStorageService} from '../../shared/services/localstorage.service';
 import {catchError, retry, tap} from "rxjs/operators";
 import {of} from "rxjs";

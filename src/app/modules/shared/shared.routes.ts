@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
-import { PagenotfoundComponent } from "./components/pagenotfound/pagenotfound.component";
-import { HomeComponent } from "./components/home/home.component";
+import { PagenotfoundComponent } from "./pages/pagenotfound/pagenotfound.component";
+import { HomeComponent } from "./pages/home/home.component";
 
 export const sharedRoutes: Routes = [
   {

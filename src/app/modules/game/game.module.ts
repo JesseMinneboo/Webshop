@@ -1,13 +1,14 @@
 import { NgModule } from "@angular/core";
 import { GameCardComponent } from "../shared/components/game-card/game-card.component";
-import { ShoppingcartComponent } from "./components/shoppingcart/shoppingcart.component";
-import { StoreComponent } from "./components/store/store.component";
+import { ShoppingcartComponent } from "./pages/shoppingcart/shoppingcart.component";
+import { StoreComponent } from "./pages/store/store.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import {MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
 import { gameRoutes } from "./game.routes";
-import {GameDetailsComponent} from "./components/game-details/game-details.component";
+import {GameDetailsComponent} from "./pages/game-details/game-details.component";
 import {FormsModule} from "@angular/forms";
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {FormsModule} from "@angular/forms";
     GameCardComponent,
     ShoppingcartComponent,
     StoreComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    CheckoutComponent
   ],
 
   exports: [

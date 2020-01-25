@@ -1,10 +1,14 @@
+<mdb-breadcrumb>
+  <mdb-breadcrumb-item routerLink="/home">Home</mdb-breadcrumb-item>
+  <mdb-breadcrumb-item class="active">Shopping cart</mdb-breadcrumb-item>
+</mdb-breadcrumb>
+
 <div class="row push-down-5">
   <div class="col-md-4">
 
     <div class="jumbotron">
-      <h2>Your total is: ${{getTotalPrice()}}</h2>
-      <a routerLink="/checkout" mdbBtn color="primary" size="sm" href="#" role="button" mdbWavesEffect>Checkout</a>
-      <a routerLink="/store" mdbBtn color="primary" size="sm" href="#" role="button" mdbWavesEffect>Continue Shopping</a>
+      <h2>Your total is: <strong>${{getTotalPrice()}}</strong></h2>
+      <button routerLink="/checkout" mdbBtn color="success" size="md" [disabled]="getTotalPrice() === '0.00'" role="button" mdbWavesEffect>Checkout</button>
     </div>
 
   </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GameService} from '../../../game/services/game.service';
 import {NgForm} from '@angular/forms';
-import {Game} from '../../../../models/game.model';
+import {Game} from '../../../game/models/game.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 @Component({

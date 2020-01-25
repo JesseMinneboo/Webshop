@@ -1,8 +1,9 @@
 import { Routes } from "@angular/router";
-import { StoreComponent } from "./components/store/store.component";
-import { GameDetailsComponent } from "./components/game-details/game-details.component";
-import { ShoppingcartComponent } from "./components/shoppingcart/shoppingcart.component";
+import { StoreComponent } from "./pages/store/store.component";
+import { GameDetailsComponent } from "./pages/game-details/game-details.component";
+import { ShoppingcartComponent } from "./pages/shoppingcart/shoppingcart.component";
 import {AuthGuardService as AuthGuard} from "../auth/guards/auth-guard.service";
+import {CheckoutComponent} from "./pages/checkout/checkout.component";
 
 export const gameRoutes: Routes = [
   {
@@ -18,4 +19,9 @@ export const gameRoutes: Routes = [
     component: ShoppingcartComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [AuthGuard]
+  }
 ]

@@ -1,6 +1,6 @@
 import { ElementRef, Injectable } from '@angular/core';
 import {HttpParams} from '@angular/common/http';
-import { IGame } from '../../../models/game.model';
+import { IGame } from '../models/game.model';
 import {catchError, map, retry, tap} from 'rxjs/operators';
 import { GameType } from '../types/gametype.enum';
 import {ApiService} from "../../shared/services/api.service";

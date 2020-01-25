@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Game} from '../../../../models/game.model';
+import {Game} from '../../models/game.model';
 import {GameService} from '../../services/game.service';
 
 @Component({

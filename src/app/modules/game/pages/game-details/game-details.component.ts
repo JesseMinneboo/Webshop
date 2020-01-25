@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Game} from '../../../../models/game.model';
+import {Game} from '../../models/game.model';
 import {GameService} from '../../services/game.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {LocalStorageService} from "../../../shared/services/localstorage.service";

@@ -1,9 +1,9 @@
 import {Routes} from "@angular/router";
-import {AdminComponent} from "./components/admin-panel/admin.component";
-import {AddComponent} from "./components/add-game/add.component";
+import {AdminComponent} from "./pages/admin-panel/admin.component";
+import {AddComponent} from "./pages/add-game/add.component";
 import {AuthGuardService as AuthGuard} from "../auth/guards/auth-guard.service";
-import {AdminGuardService as AdminGuard} from "../auth/guards/admin-guard.service";
-import {EditGameComponent} from "./components/edit-game/edit-game.component";
+import {AdminGuardService as AdminGuard} from "./guards/admin-guard.service";
+import {EditGameComponent} from "./pages/edit-game/edit-game.component";
 
 export const adminRoutes: Routes = [
   {
