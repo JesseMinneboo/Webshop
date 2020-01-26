@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {GameService} from '../../../game/services/game.service';
-import {NgForm} from '@angular/forms';
-import {Game} from '../../../game/models/game.model';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { GameService } from '../../../game/services/game.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Game } from '../../../game/models/game.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-edit-game',
@@ -14,25 +15,38 @@ export class EditGameComponent implements OnInit {
   currentGameId: number;
   isLoading = false;
   error: string = null;
+  form: FormGroup;
 
   constructor(private activatedRoute: ActivatedRoute,
               private gameService: GameService,
-              private router: Router) { }
+              private router: Router,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      title: [''],
+      description: [],
+      imagePath: [''],
+      price: [''],
+    });
+
     this.activatedRoute.params.subscribe((data: Params) => {
       this.gameService.getGameById(data.gameId).subscribe(response => {
         this.game = response;
         this.currentGameId = response.id;
+
+        this.form.get('title').setValue(this.game.name);
+        this.form.get('description').setValue(this.game.description);
+        this.form.get('imagePath').setValue(this.game.imagePath);
+        this.form.get('price').setValue(this.game.price);
       });
     });
   }
 
-
-  onEditGame = async (form: NgForm): Promise<void> => {
+  onEditGame = async (form: FormGroup): Promise<void> => {
     this.isLoading = true;
     const name = form.value.title;
-    const imagePath = form.value.image;
+    const imagePath = form.value.imagePath;
     const description = form.value.description;
     const price = form.value.price;
 

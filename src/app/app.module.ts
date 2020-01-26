@@ -13,8 +13,6 @@ import { GameModule } from './modules/game/game.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { RouterModule } from '@angular/router';
 
-// todo: agngular guard
-
 @NgModule({
   declarations: [
     AppComponent,

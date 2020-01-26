@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {IGame} from '../../../game/models/game.model';
-import {Router} from '@angular/router';
-import {GameService} from '../../../game/services/game.service';
-import {GameType} from '../../../game/types/gametype.enum';
+import { Component, OnInit } from '@angular/core';
+import { IGame } from '../../../game/models/game.model';
+import { Router } from '@angular/router';
+import { GameService } from '../../../game/services/game.service';
+import { GameType } from '../../../game/types/gametype.enum';
 
 @Component({
   selector: 'app-home',
@@ -27,19 +27,19 @@ export class HomeComponent implements OnInit {
   }
 
   getFourNewGames() {
-    this.gameService.getFourGames(GameType.NEW).subscribe(response => {
+    this.gameService.fetchGamesByType(GameType.NEW).subscribe(response => {
       this.newGames = response;
     });
   }
 
   getFourPopularGames() {
-   this.gameService.getFourGames(GameType.POPULAR).subscribe(response => {
+   this.gameService.fetchGamesByType(GameType.POPULAR).subscribe(response => {
      this.popularGames = response;
    });
   }
 
   getFourFreeGames() {
-    this.gameService.getFourGames(GameType.FREE).subscribe(response => {
+    this.gameService.fetchGamesByType(GameType.FREE).subscribe(response => {
       this.freeGames = response;
     });
   }

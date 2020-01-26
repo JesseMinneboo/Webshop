@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {GameService} from "../../../game/services/game.service";
-import {GameType} from "../../../game/types/gametype.enum";
-import {IGame} from "../../../game/models/game.model";
+import { Component, OnInit } from '@angular/core';
+import { GameService } from "../../../game/services/game.service";
+import { GameType } from "../../../game/types/gametype.enum";
+import { IGame } from "../../../game/models/game.model";
 
 @Component({
   selector: 'app-admin',
@@ -16,13 +16,13 @@ export class AdminComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    this.gameService.getFourGames(GameType.ALL).subscribe(response => {
+    this.gameService.fetchGamesByType(GameType.ALL).subscribe(response => {
       this.elements = response;
     });
   }
 
   removeGameById(id: number) {
-    this.gameService.deleteGameById(id).subscribe(response => {
+    this.gameService.deleteGameById(id).subscribe(() => {
       this.ngOnInit();
     });
   }

@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOutUser();
+    this.authService.logOut();
   }
 
   getCurrentRoute() {

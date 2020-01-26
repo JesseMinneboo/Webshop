@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { PagenotfoundComponent } from "./pages/pagenotfound/pagenotfound.component";
+import { PageNotFoundComponent } from "./pages/pagenotfound/page-not-found.component";
 import { HomeComponent } from "./pages/home/home.component";
 
 export const sharedRoutes: Routes = [
@@ -13,6 +13,6 @@ export const sharedRoutes: Routes = [
   },
   {
     path: '**',
-    component: PagenotfoundComponent
+    component: PageNotFoundComponent
   },
 ];

@@ -1,14 +1,32 @@
-<h2 style="margin-top: 5vh">Admin Panel</h2>
+<h2 class="margin-5">Admin Panel</h2>
+
 <hr>
-<button routerLink="/admin/add-game" style="margin-top: 4vh" mdbBtn type="button" size="sm" color="success" mdbWavesEffect>Add game</button>
-<table mdbTable small="true" hover="true" responsive="true" style="margin-top: 2.5vh;" class="w-100 d-block d-md-table">
+
+<button routerLink="/admin/add-game"
+        class="margin-5"
+        mdbBtn
+        type="button"
+        size="sm"
+        color="success"
+        mdbWavesEffect
+>
+  Add game
+</button>
+
+<table mdbTable
+       small="true"
+       hover="true"
+       responsive="true"
+       class="w-100 d-block d-md-table margin-2-5">
+
   <thead>
   <tr>
     <th *ngFor="let head of headElements" scope="col">{{head}} </th>
   </tr>
   </thead>
+
   <tbody>
-  <tr mdbTableCol *ngFor="let el of elements">
+  <tr *ngFor="let el of elements">
     <th scope="row">{{el.name}}</th>
     <td>{{el.price}}</td>
     <td>{{el.imagePath}}</td>

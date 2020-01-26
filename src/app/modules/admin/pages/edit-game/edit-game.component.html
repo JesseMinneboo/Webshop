@@ -2,36 +2,32 @@
   <p>{{ error }}</p>
 </div>
 
-
-
 <!-- Default form contact -->
-<form #editGameForm="ngForm"
+<form [formGroup]="form"
       class="text-center border border-light p-5"
-      (ngSubmit)="onEditGame(editGameForm)">
+      (ngSubmit)="onEditGame(form)">
 
   <p class="h4 mb-4">You are editing: {{game.name}}</p>
 
   <!-- Name -->
   <input type="text"
-         ngModel
+         formControlName="title"
          name="title"
          class="form-control mb-4"
-         [value]="game.name"
          placeholder="title">
 
   <!-- Image path -->
   <input type="text"
-         ngModel
-         name="image"
+         formControlName="imagePath"
+         name="imagePath"
          class="form-control mb-4"
-         [value]="game.imagePath"
          placeholder="Image Path">
 
   <!-- Description -->
   <div class="form-group">
     <textarea class="form-control rounded-0"
+              formControlName="description"
               rows="3"
-              ngModel
               name="description"
               placeholder="Description">
     </textarea>
@@ -39,9 +35,8 @@
 
   <!-- Price -->
   <input type="number"
-         ngModel
+         formControlName="price"
          name="price"
-         [value]="game.price"
          class="form-control mb-4"
          placeholder="Price">
 

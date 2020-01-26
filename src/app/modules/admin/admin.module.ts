@@ -1,11 +1,11 @@
-import {NgModule} from "@angular/core";
-import {AdminComponent} from "./pages/admin-panel/admin.component";
-import {AddComponent} from "./pages/add-game/add.component";
-import {FormsModule} from "@angular/forms";
-import {MDBBootstrapModule} from "angular-bootstrap-md";
-import {CommonModule} from "@angular/common";
-import {RouterModule} from "@angular/router";
-import {adminRoutes} from "./admin.routes";
+import { NgModule } from "@angular/core";
+import { AdminComponent} from "./pages/admin-panel/admin.component";
+import { AddComponent } from "./pages/add-game/add.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MDBBootstrapModule } from "angular-bootstrap-md";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { adminRoutes } from "./admin.routes";
 import { EditGameComponent } from './pages/edit-game/edit-game.component';
 
 
@@ -22,12 +22,13 @@ import { EditGameComponent } from './pages/edit-game/edit-game.component';
 
   providers: [
   ],
-  imports: [
-    FormsModule,
-    MDBBootstrapModule,
-    CommonModule,
-    RouterModule.forChild(adminRoutes)
-  ]
+    imports: [
+        FormsModule,
+        MDBBootstrapModule,
+        CommonModule,
+        RouterModule.forChild(adminRoutes),
+        ReactiveFormsModule
+    ]
 })
 
 export class AdminModule {}

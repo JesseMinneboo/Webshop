@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 interface IApiOptions {
   endpoint?: string;
@@ -69,7 +69,7 @@ export class ApiService {
   configureOptions = (options: IApiOptions): IApiOptions => {
     options = this.setOptionsDefaults(options);
     return options;
-  }
+  };
 
   getApiUrl = (): string => ApiService.baseUrl + ApiService.prefix;
 

@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { sharedRoutes } from "./shared.routes";
-import {MDBBootstrapModule, MDBRootModule} from "angular-bootstrap-md";
+import { MDBBootstrapModule, MDBRootModule } from "angular-bootstrap-md";
 import { CommonModule } from "@angular/common";
-import { PagenotfoundComponent } from "./pages/pagenotfound/pagenotfound.component";
+import { PageNotFoundComponent } from "./pages/pagenotfound/page-not-found.component";
 import { GameModule } from "../game/game.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { FormsModule } from "@angular/forms";
@@ -11,7 +11,7 @@ import { FormsModule } from "@angular/forms";
 @NgModule({
   declarations: [
     HomeComponent,
-    PagenotfoundComponent
+    PageNotFoundComponent
   ],
 
   exports: [

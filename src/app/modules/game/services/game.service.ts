@@ -1,10 +1,10 @@
 import { ElementRef, Injectable } from '@angular/core';
-import {HttpParams} from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { IGame } from '../models/game.model';
-import {catchError, map, retry, tap} from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 import { GameType } from '../types/gametype.enum';
-import {ApiService} from "../../shared/services/api.service";
-import {of} from "rxjs";
+import { ApiService } from "../../shared/services/api.service";
+import { of } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class GameService {
@@ -12,7 +12,7 @@ export class GameService {
 
   constructor(private api: ApiService) {}
 
-  getFourGames(gameType: GameType){
+  fetchGamesByType(gameType: GameType){
     switch (gameType) {
       case GameType.ALL:
         return this.getGamesByType('all');

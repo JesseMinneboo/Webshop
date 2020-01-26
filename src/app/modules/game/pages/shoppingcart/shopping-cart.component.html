@@ -8,7 +8,15 @@
 
     <div class="jumbotron">
       <h2>Your total is: <strong>${{getTotalPrice()}}</strong></h2>
-      <button routerLink="/checkout" mdbBtn color="success" size="md" [disabled]="getTotalPrice() === '0.00'" role="button" mdbWavesEffect>Checkout</button>
+      <button routerLink="/checkout"
+              mdbBtn color="success"
+              (click)="deleteShoppingCart()"
+              size="md" [disabled]="getTotalPrice() === '0.00'"
+              role="button"
+              mdbWavesEffect
+      >
+        Checkout
+      </button>
     </div>
 
   </div>

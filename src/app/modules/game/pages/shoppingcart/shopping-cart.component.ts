@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Game} from '../../models/game.model';
-import {LocalStorageService} from "../../../shared/services/localstorage.service";
+import { Game } from '../../models/game.model';
+import { LocalStorageService } from "../../../shared/services/localstorage.service";
 
 @Component({
   selector: 'app-shoppingcart',
-  templateUrl: './shoppingcart.component.html',
-  styleUrls: ['./shoppingcart.component.scss']
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.scss']
 })
-export class ShoppingcartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService) { }
 
@@ -32,5 +32,10 @@ export class ShoppingcartComponent implements OnInit {
     this.localStorageService.removeLocal('shopping cart');
     this.localStorageService.setLocal('shopping cart', this.gamesInList);
     this.ngOnInit();
+  }
+
+  deleteShoppingCart() {
+    this.localStorageService.removeLocal('shopping cart');
+    this.gamesInList = [];
   }
 }

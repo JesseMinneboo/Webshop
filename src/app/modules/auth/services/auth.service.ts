@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import {HttpParams} from "@angular/common/http";
-import {IUser, User} from '../models/user.model';
-import {LocalStorageService} from '../../shared/services/localstorage.service';
-import {catchError, retry, tap} from "rxjs/operators";
-import {of} from "rxjs";
-import {ApiService} from "../../shared/services/api.service";
+import { HttpParams } from "@angular/common/http";
+import { IUser, User} from '../models/user.model';
+import { LocalStorageService } from '../../shared/services/localstorage.service';
+import { catchError, retry, tap } from "rxjs/operators";
+import { of } from "rxjs";
+import { ApiService } from "../../shared/services/api.service";
 
 @Injectable({
   providedIn: 'root'
@@ -60,13 +60,13 @@ export class AuthService {
           tap(data => console.log(data)),
           retry(2),
           catchError(() => of(this.setAuthenticated(false)))
-        ).subscribe((user: IUser) => {
+        ).subscribe(() => {
         resolve();
       });
     });
   }
 
-  logOutUser() {
+  logOut() {
     this.authUser = null;
     this.isAuthenticated = false;
     this.authToken = null;
