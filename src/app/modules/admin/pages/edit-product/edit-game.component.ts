@@ -31,7 +31,7 @@ export class EditGameComponent implements OnInit {
     });
 
     this.activatedRoute.params.subscribe((data: Params) => {
-      this.gameService.getGameById(data.gameId).subscribe(response => {
+      this.gameService.getGameById(data.productId).subscribe(response => {
         this.game = response;
         this.currentGameId = response.id;
 
@@ -50,8 +50,14 @@ export class EditGameComponent implements OnInit {
     const description = form.value.description;
     const price = form.value.price;
 
-    await this.gameService.editGame(this.currentGameId, name, description, price, imagePath);
-    this.isLoading = false;
-    await this.router.navigateByUrl('home');
+    if (price >= 0 && price < 1000) {
+      await this.gameService.editGame(this.currentGameId, name, description, price, imagePath);
+      form.reset();
+      this.isLoading = false;
+      await this.router.navigateByUrl('/admin')
+    } else {
+      this.error = 'Please enter a number between 0 and 1000'
+      this.isLoading = false;
+    }
   }
 }

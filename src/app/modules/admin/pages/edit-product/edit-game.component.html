@@ -38,15 +38,16 @@
          formControlName="price"
          name="price"
          class="form-control mb-4"
-         placeholder="Price">
+         placeholder="Price"
+         required
+  >
 
-
-  <!-- Sign up button -->
   <button mdbBtn
           color="primary"
           block="true"
           class="my-4"
           type="submit"
+          [disabled]="!form.valid"
           *ngIf="!isLoading"
   >
     Add

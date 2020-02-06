@@ -15,10 +15,6 @@ export class LocalStorageService {
 
   }
 
-  resetLocal() {
-    return localStorage.clear();
-  }
-
   removeLocal(key) {
     return localStorage.removeItem(key);
   }

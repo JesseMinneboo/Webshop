@@ -25,9 +25,15 @@ export class AddComponent implements OnInit {
     const description = form.value.description;
     const price = form.value.price;
 
-    await this.gameService.addGame(name, description, price, imagePath);
-    form.reset();
-    this.isLoading = false;
-    await this.router.navigateByUrl('/admin')
+    if (price >= 0 && price < 1000) {
+      await this.gameService.addGame(name, description, price, imagePath);
+      form.reset();
+      this.isLoading = false;
+      await this.router.navigateByUrl('/admin')
+    } else {
+      this.error = 'Please enter a number between 0 and 1000'
+      this.isLoading = false;
+    }
+
   }
 }
