@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 interface IApiOptions {
+  auth?: boolean;
   endpoint?: string;
   body?: {
     headers?: HttpHeaders | {
@@ -37,9 +38,13 @@ export class ApiService {
   post(options: IApiOptions): Observable<any> {
     options = this.configureOptions(options);
 
+    const headers: HttpHeaders = new HttpHeaders();
+    headers.set('Content-Type', 'application/x-www-form-urlencoded');
+
+
     try {
       return this.http.post(this.generateUrl(options.endpoint), options.body, {
-        headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+        headers
       });
     } catch (e) {
       console.error(e);
@@ -49,8 +54,13 @@ export class ApiService {
   put(options: IApiOptions): Observable<any> {
     options = this.configureOptions(options);
 
+    const headers: HttpHeaders = new HttpHeaders();
+    headers.set('Content-Type', 'application/x-www-form-urlencoded');
+
     try {
-      return this.http.put(this.generateUrl(options.endpoint), options.body);
+      return this.http.put(this.generateUrl(options.endpoint), options.body, {
+        headers
+      });
     } catch (e) {
       console.error(e);
     }
@@ -59,8 +69,13 @@ export class ApiService {
   delete(options: IApiOptions): Observable<any> {
     options = this.configureOptions(options);
 
+    const headers: HttpHeaders = new HttpHeaders();
+    headers.set('Content-Type', 'application/x-www-form-urlencoded');
+
     try {
-      return this.http.delete(this.generateUrl(options.endpoint), options.body);
+      return this.http.delete(this.generateUrl(options.endpoint), {
+        headers
+      });
     } catch (e) {
       console.error(e);
     }
@@ -68,6 +83,8 @@ export class ApiService {
 
   configureOptions = (options: IApiOptions): IApiOptions => {
     options = this.setOptionsDefaults(options);
+    options = this.setAuthHeaderIfNeeded(options);
+
     return options;
   };
 
@@ -77,13 +94,22 @@ export class ApiService {
 
   setOptionsDefaults = (options: IApiOptions): IApiOptions => {
     const defaultOptions: IApiOptions = {
+      auth: false,
       endpoint: '',
       body: {}
     };
 
     return { ...defaultOptions, ...options };
+  };
+
+
+  setAuthHeaderIfNeeded(options: IApiOptions): IApiOptions {
+    options.body.headers = {
+      auth: options.auth
+        ? 'true'
+        : 'false'
+    };
+
+    return options;
   }
-
-
-
 }

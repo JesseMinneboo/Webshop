@@ -1,30 +1,30 @@
 import { NgModule } from "@angular/core";
-import { GameCardComponent } from "../shared/components/game-card/game-card.component";
+import { ProductCardComponent } from "../shared/components/product-card/product-card.component";
 import { ShoppingCartComponent } from "./pages/shoppingcart/shopping-cart.component";
 import { StoreComponent } from "./pages/store/store.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 import { MDBBootstrapModule, MDBRootModule } from "angular-bootstrap-md";
-import { gameRoutes } from "./game.routes";
-import { GameDetailsComponent } from "./pages/game-details/game-details.component";
+import { productRoutes } from "./product.routes";
+import { ProductDetailsComponent } from "./pages/product-details/product-details.component";
 import { FormsModule } from "@angular/forms";
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
-    GameCardComponent,
+    ProductCardComponent,
     ShoppingCartComponent,
     StoreComponent,
-    GameDetailsComponent,
+    ProductDetailsComponent,
     CheckoutComponent
   ],
 
   exports: [
-    GameCardComponent
+    ProductCardComponent
   ],
 
   imports: [
-    RouterModule.forChild(gameRoutes),
+    RouterModule.forChild(productRoutes),
     CommonModule,
     FormsModule,
     MDBBootstrapModule.forRoot()
@@ -36,4 +36,4 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
   ]
 })
 
-export class GameModule {}
+export class ProductModule {}

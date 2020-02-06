@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IGame } from '../../../game/models/game.model';
+import { IProduct } from '../../../store/models/product.model';
 import { Router } from '@angular/router';
-import { GameService } from '../../../game/services/game.service';
-import { GameType } from '../../../game/types/gametype.enum';
+import { GameService } from '../../../store/services/product.service';
+import { GameType } from '../../../store/types/product.enum';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,9 @@ import { GameType } from '../../../game/types/gametype.enum';
 })
 
 export class HomeComponent implements OnInit {
-  newGames: IGame[] = [];
-  popularGames: IGame[] = [];
-  freeGames: IGame[] = [];
+  newGames: IProduct[] = [];
+  popularGames: IProduct[] = [];
+  freeGames: IProduct[] = [];
   isLoading = true;
 
   constructor(private router: Router,

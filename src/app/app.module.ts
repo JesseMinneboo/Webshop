@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AuthModule } from './modules/auth/auth.module';
 import { AdminModule } from './modules/admin/admin.module';
-import { GameModule } from './modules/game/game.module';
+import { ProductModule } from './modules/store/product.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { RouterModule } from '@angular/router';
 
@@ -30,7 +30,7 @@ import { RouterModule } from '@angular/router';
     MDBBootstrapModule.forRoot(),
     AuthModule,
     AdminModule,
-    GameModule,
+    ProductModule,
     SharedModule,
     HttpClientModule,
   ],

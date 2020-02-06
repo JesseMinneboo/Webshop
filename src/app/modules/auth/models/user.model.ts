@@ -35,14 +35,4 @@ export class User {
   getFullName(): string {
     return `${this.name} ${this.surname}`;
   }
-
-  isAdmin(): boolean {
-    if(this.roles.find(x => x.role == "ADMIN")){
-      return true;
-    } else if(this.roles == null) {
-      return false;
-    } else {
-      return false;
-    }
-  }
 }

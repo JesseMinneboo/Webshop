@@ -1,6 +1,6 @@
 <mdb-breadcrumb>
   <mdb-breadcrumb-item routerLink="/home">Home</mdb-breadcrumb-item>
-  <mdb-breadcrumb-item class="active">{{game.name}}</mdb-breadcrumb-item>
+  <mdb-breadcrumb-item class="active">{{product.name}}</mdb-breadcrumb-item>
 </mdb-breadcrumb>
 
 <!-- News jumbotron -->
@@ -18,7 +18,7 @@
 
       <!-- Featured image -->
       <div class="view overlay waves-light">
-        <img src="{{game.imagePath}}" class="img-fluid" alt="{{game.name}}">
+        <img src="{{product.imagePath}}" class="img-fluid" alt="{{product.name}}">
         <div class="alert alert-danger error" *ngIf="error">
           <p>{{ error }}</p>
         </div>
@@ -30,10 +30,10 @@
     <!-- Grid column -->
     <div class="col-md-7 text-md-left ml-3 mt-3">
 
-      <h4 class="h4 mb-4">{{game.name}}</h4>
+      <h4 class="h4 mb-4">{{product.name}}</h4>
 
-      <p class="font-weight-normal">{{game.description}}</p>
-      <p class="font-weight-normal">${{game.price}}</p>
+      <p class="font-weight-normal">{{product.description}}</p>
+      <p class="font-weight-normal">${{product.price}}</p>
 
       <a  (click)="addToCart()" mdbBtn color="success" size="sm" mdbWavesEffect>Add to cart</a>
 

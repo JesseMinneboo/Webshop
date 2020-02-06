@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Game } from '../../models/game.model';
-import { GameService } from '../../services/game.service';
+import { Product } from '../../models/product.model';
+import { GameService } from '../../services/product.service';
 
 @Component({
   selector: 'app-store',
@@ -9,7 +9,7 @@ import { GameService } from '../../services/game.service';
 })
 export class StoreComponent implements OnInit {
   @ViewChild('gameNameInput', {static: true}) gameNameInput: ElementRef;
-  allGames: Game[] = [];
+  allGames: Product[] = [];
   isLoading = true;
 
   constructor(private gameService: GameService) { }

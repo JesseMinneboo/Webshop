@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { GameService } from "../../../game/services/game.service";
+import { GameService } from "../../../store/services/product.service";
 import { Router } from "@angular/router";
 
 @Component({

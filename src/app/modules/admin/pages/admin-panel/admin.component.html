@@ -2,7 +2,7 @@
 
 <hr>
 
-<button routerLink="/admin/add-game"
+<button routerLink="/admin/add-product"
         class="margin-5"
         mdbBtn
         type="button"
@@ -30,7 +30,7 @@
     <th scope="row">{{el.name}}</th>
     <td>{{el.price}}</td>
     <td>{{el.imagePath}}</td>
-    <td><button routerLink="/admin/edit-game/{{el.id}}" mdbBtn type="button" size="sm" color="warning" mdbWavesEffect>Edit</button></td>
+    <td><button routerLink="/admin/edit-product/{{el.id}}" mdbBtn type="button" size="sm" color="warning" mdbWavesEffect>Edit</button></td>
     <td><button (click)="removeGameById(el.id)" mdbBtn type="button" size="sm" color="danger" mdbWavesEffect>Delete</button></td>
   </tr>
   </tbody>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from '../../../game/services/game.service';
+import { GameService } from '../../../store/services/product.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Game } from '../../../game/models/game.model';
+import { Product } from '../../../store/models/product.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 
@@ -11,7 +11,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./edit-game.component.scss']
 })
 export class EditGameComponent implements OnInit {
-  game: Game = new Game();
+  game: Product = new Product();
   currentGameId: number;
   isLoading = false;
   error: string = null;

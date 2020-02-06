@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../../models/game.model';
+import { Product } from '../../models/product.model';
 import { LocalStorageService } from "../../../shared/services/localstorage.service";
 
 @Component({
@@ -11,7 +11,7 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService) { }
 
-  gamesInList: Game[] = [];
+  gamesInList: Product[] = [];
 
   ngOnInit() {
     this.gamesInList = JSON.parse(this.localStorageService.getLocal('shopping cart'));

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../../models/game.model';
-import { GameService } from '../../services/game.service';
+import { Product } from '../../models/product.model';
+import { GameService } from '../../services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LocalStorageService } from "../../../shared/services/localstorage.service";
 import { AuthService } from "../../../auth/services/auth.service";
 
 @Component({
   selector: 'app-game-details',
-  templateUrl: './game-details.component.html',
-  styleUrls: ['./game-details.component.scss']
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss']
 })
-export class GameDetailsComponent implements OnInit {
-  shoppingCartArray: Game[] = [];
-  game = new Game();
+export class ProductDetailsComponent implements OnInit {
+  shoppingCartArray: Product[] = [];
+  product = new Product();
   error: string;
   isLoading = true;
 
@@ -25,7 +25,7 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((data: Params) => {
       this.gameService.getGameById(data.gameId).subscribe(response => {
-        this.game = response;
+        this.product = response;
       });
     });
     this.isLoading = false;
@@ -34,10 +34,10 @@ export class GameDetailsComponent implements OnInit {
   addToCart() {
     if (this.authService.isAuthenticated) {
       this.shoppingCartArray = JSON.parse(this.localStorageService.getLocal('shopping cart'));
-      if(this.gameExistsInArray(this.shoppingCartArray, this.game.name)) {
-        this.error = 'You already have this game';
+      if(this.gameExistsInArray(this.shoppingCartArray, this.product.name)) {
+        this.error = 'You already have this store';
       } else {
-        this.shoppingCartArray.push(this.game);
+        this.shoppingCartArray.push(this.product);
         this.localStorageService.setLocal('shopping cart', this.shoppingCartArray);
         this.router.navigateByUrl('/cart');
 
@@ -47,7 +47,7 @@ export class GameDetailsComponent implements OnInit {
     }
   }
 
-  gameExistsInArray (games: Game[], gameName: string) {
+  gameExistsInArray (games: Product[], gameName: string) {
     for (let i = 0; i < games.length; i++) {
       if (games[i].name == gameName) {
         return true;

@@ -4,7 +4,7 @@ import { sharedRoutes } from "./shared.routes";
 import { MDBBootstrapModule, MDBRootModule } from "angular-bootstrap-md";
 import { CommonModule } from "@angular/common";
 import { PageNotFoundComponent } from "./pages/pagenotfound/page-not-found.component";
-import { GameModule } from "../game/game.module";
+import { ProductModule } from "../store/product.module";
 import { HomeComponent } from "./pages/home/home.component";
 import { FormsModule } from "@angular/forms";
 
@@ -22,7 +22,7 @@ import { FormsModule } from "@angular/forms";
     RouterModule.forRoot(sharedRoutes),
     CommonModule,
     MDBBootstrapModule.forRoot(),
-    GameModule,
+    ProductModule,
     FormsModule
   ],
 
