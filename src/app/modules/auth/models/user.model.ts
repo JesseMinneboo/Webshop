@@ -12,6 +12,7 @@ export interface IUser {
   password: string;
   jwt?: string;
   roles: Role[];
+  avatarUrl?: string;
 }
 
 export class User {
@@ -22,6 +23,7 @@ export class User {
   password: string;
   jwt?: string;
   roles: Role[];
+  avatarUrl?: string;
 
   constructor(user: IUser) {
     this.id = user.id;
@@ -30,6 +32,7 @@ export class User {
     this.surname = user.surname;
     this.jwt = user.jwt;
     this.roles = user.roles;
+    this.avatarUrl = user.avatarUrl;
   }
 
   getFullName(): string {

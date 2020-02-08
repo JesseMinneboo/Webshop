@@ -1,0 +1,45 @@
+<h2 class="push-down-5">My account</h2>
+
+<div class="row push-down-5 justify-content-around">
+  <div class="col-xs-12 col-md-4">
+    <img src="{{this.authService.getAuthUser().avatarUrl}}" style="height: 150px; width: auto" class="rounded float-left d-block" alt="Add a avater URl for an epic profile picture">
+  </div>
+  <div class="col-xs-12 col-md-8">
+    <form [formGroup]="updateForm"
+          (ngSubmit)="onUpdateUser(updateForm)">
+      <div class="form-row">
+        <div class="col mb-4">
+          <small class="form-text text-muted">First name</small>
+          <input mdbInput type="text" class="form-control" formControlName="name" placeholder="First name">
+        </div>
+
+        <div class="col">
+          <small class="form-text text-muted">Last name</small>
+          <input mdbInput type="text" class="form-control" formControlName="surname" placeholder="Last name">
+        </div>
+      </div>
+
+      <small class="form-text text-muted">Email</small>
+      <input mdbInput type="text" class="form-control mb-4" formControlName="email" placeholder="Email">
+
+      <small class="form-text text-muted">Please rewrite or change your password</small>
+      <input mdbInput type="password" class="form-control mb-4" formControlName="password" placeholder="password" required minlength="8">
+
+      <small class="form-text text-muted">Avatar URL</small>
+      <input mdbInput type="text" class="form-control mb-4" formControlName="avatarUrl" placeholder="Change avatar URL">
+
+      <button [disabled]="!updateForm.valid" type="submit" size="sm" mdbBtn color="success" mdbWavesEffect>Save</button>
+
+    </form>
+  </div>
+</div>
+
+<div *ngIf="!this.authService.isAdmin">
+  <hr class="push-down-up-2-5">
+
+  <div class="row justify-content-between">
+    <div class="col">
+      <button (click)="deleteUser(this.authService.getAuthUser().id)" type="button" size="sm" mdbBtn color="danger" mdbWavesEffect>Delete Account</button>
+    </div>
+  </div>
+</div>

@@ -89,7 +89,7 @@ export class AuthService {
           retry(2),
           catchError(() => of(this.setAuthenticated(false)))
         ).subscribe((user: IUser) => {
-        if (user.name != null) {
+        if (user != undefined && user.name != null) {
           this.setAuthUser(new User(user));
 
           this.setAuthToken(
@@ -114,17 +114,17 @@ export class AuthService {
       this.api.post({
         auth: false,
         body: new HttpParams()
-          .set('username', email)
+          .set('email', email)
           .set('password', password)
-          .set('firstname', name)
-          .set('lastname', surname)
+          .set('name', name)
+          .set('surname', surname)
           .set('role', 'USER'),
-        endpoint: this.PREFIX + '/create'
+        endpoint: this.PREFIX + '/register'
       })
         .pipe(
           retry(2),
           catchError(() => of(this.setAuthenticated(false)))
-        ).subscribe((user: IUser) => {
+        ).subscribe(() => {
         resolve();
       });
     });

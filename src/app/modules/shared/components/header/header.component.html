@@ -56,24 +56,21 @@
       </li>
     </ul>
 
-    <!-- Links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Dropdown -->
-      <li class="nav-item">
-        <a routerLink="/cart" class="nav-link">
-          <i class="fas fa-shopping-cart logo-blue-color"></i>
-        </a>
-      </li>
-      <li class="nav-item dropdown" dropdown>
-        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <mdb-icon fas icon="user" class="logo-blue-color"></mdb-icon>{{authService.getAuthUser().getFullName()}}<span class="caret"></span></a>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item avatar dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <img style="height: auto; width: 35px" src="{{this.authService.getAuthUser().avatarUrl}}" class="img-fluid rounded-circle z-depth-0">
+          {{authService.getAuthUser().getFullName()}}</a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a *ngIf="authService.isAdmin" class="dropdown-item waves-light" mdbWavesEffect routerLink="admin">Admin page</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="account">My account</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="cart">Shopping cart</a>
           <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
+          <hr *ngIf="authService.isAdmin">
+          <a *ngIf="authService.isAdmin" class="dropdown-item waves-light" mdbWavesEffect routerLink="admin">Admin page</a>
         </div>
       </li>
     </ul>
-    <!-- Links -->
+
   </links>
   <!-- Collapsible content -->
 

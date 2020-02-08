@@ -12,6 +12,8 @@ import { AdminModule } from './modules/admin/admin.module';
 import { ProductModule } from './modules/store/product.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { UserModule } from "./modules/user/user.module";
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     RouterModule,
+    UserModule,
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
     AuthModule,
@@ -33,6 +36,10 @@ import { RouterModule } from '@angular/router';
     ProductModule,
     SharedModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      preventDuplicates: false
+    })
   ],
 
   providers: [

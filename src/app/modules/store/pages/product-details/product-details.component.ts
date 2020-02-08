@@ -4,6 +4,7 @@ import { GameService } from '../../services/product.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { LocalStorageService } from "../../../shared/services/localstorage.service";
 import { AuthService } from "../../../auth/services/auth.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-game-details',
@@ -20,7 +21,8 @@ export class ProductDetailsComponent implements OnInit {
               private gameService: GameService,
               private localStorageService: LocalStorageService,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((data: Params) => {
@@ -34,22 +36,27 @@ export class ProductDetailsComponent implements OnInit {
   addToCart() {
     if (this.authService.isAuthenticated) {
       this.shoppingCartArray = JSON.parse(this.localStorageService.getLocal('shopping cart'));
+      if (this.shoppingCartArray === null) {
+        this.localStorageService.setLocal("shopping cart", []);
+        this.shoppingCartArray = JSON.parse(this.localStorageService.getLocal('shopping cart'));
+      }
       if(this.gameExistsInArray(this.shoppingCartArray, this.product.name)) {
-        this.error = 'You already have this store';
+        this.toastr.error("You already have this game");
       } else {
         this.shoppingCartArray.push(this.product);
         this.localStorageService.setLocal('shopping cart', this.shoppingCartArray);
-        this.router.navigateByUrl('/cart');
+        this.toastr.success(this.product.name + " added to your shopping cart!");
 
       }
     } else {
-      this.error = 'You have to login to purchase games'
+      this.toastr.error("You have to login to purchase games");
     }
   }
 
-  gameExistsInArray (games: Product[], gameName: string) {
-    for (let i = 0; i < games.length; i++) {
-      if (games[i].name == gameName) {
+  gameExistsInArray (products: Product[], gameName: string) {
+    if (products == null) return;
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].name == gameName) {
         return true;
       }
     }

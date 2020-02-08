@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { AuthService } from '../../services/auth.service';
 import { Router } from "@angular/router";
 import { LocalStorageService } from "../../../shared/services/localstorage.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,11 @@ import { LocalStorageService } from "../../../shared/services/localstorage.servi
 })
 export class LoginComponent implements OnInit {
   isLoading = false;
-  error: string = null;
 
   constructor(private authService: AuthService,
               private router: Router,
-              private localStorageService: LocalStorageService) {}
+              private localStorageService: LocalStorageService,
+              private toastr: ToastrService) {}
 
   ngOnInit() {}
 
@@ -27,12 +28,12 @@ export class LoginComponent implements OnInit {
     await this.authService.login(email, password);
 
     if(this.authService.isAuthenticated) {
-
       this.isLoading = false;
-      this.localStorageService.setLocal('shopping cart', []);
+      this.toastr.success( "Login successfully");
       await this.router.navigateByUrl('home');
     } else {
       this.isLoading = false;
+      this.toastr.error("Your email or password is incorrect.", "Login failed");
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from "./modules/auth/services/auth.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-root',

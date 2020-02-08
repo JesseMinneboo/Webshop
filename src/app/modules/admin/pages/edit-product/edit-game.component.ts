@@ -3,6 +3,7 @@ import { GameService } from '../../../store/services/product.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from '../../../store/models/product.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -20,7 +21,9 @@ export class EditGameComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private gameService: GameService,
               private router: Router,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private toastr: ToastrService
+              ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -54,9 +57,10 @@ export class EditGameComponent implements OnInit {
       await this.gameService.editGame(this.currentGameId, name, description, price, imagePath);
       form.reset();
       this.isLoading = false;
+      this.toastr.success("Game had been changed");
       await this.router.navigateByUrl('/admin')
     } else {
-      this.error = 'Please enter a number between 0 and 1000'
+      this.toastr.error("Please enter a number between 0 and 1000");
       this.isLoading = false;
     }
   }
