@@ -17,7 +17,7 @@ export class AccountPageComponent implements OnInit {
               private toastr: ToastrService,
               private formBuilder: FormBuilder,
               private route: Router,
-              private authService: AuthService) {
+              public authService: AuthService) {
   }
 
   ngOnInit() {
