@@ -21,7 +21,7 @@ interface IApiOptions {
 })
 export class ApiService {
   constructor(private http: HttpClient) { }
-  private static readonly baseUrl = 'http://localhost:9000';
+  private static readonly baseUrl = 'http://h2867717.stratoserver.net:9000';
   private static readonly prefix = '/api';
 
   get(options: IApiOptions): Observable<any> {
@@ -69,7 +69,7 @@ export class ApiService {
   configureOptions = (options: IApiOptions): IApiOptions => {
     options = this.setOptionsDefaults(options);
     return options;
-  }
+  };
 
   getApiUrl = (): string => ApiService.baseUrl + ApiService.prefix;
 

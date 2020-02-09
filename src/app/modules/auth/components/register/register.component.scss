@@ -7,3 +7,14 @@ form {
   width: 60%;
   margin: 5vh auto;
 }
+
+@media only screen and (max-width: 768px) {
+  form {
+    width: 100%;
+  }
+
+  .error {
+    width: 100%;
+  }
+}
+

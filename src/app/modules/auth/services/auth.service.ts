@@ -16,7 +16,8 @@ export class AuthService {
   private authUser: User;
   private authToken: string;
 
-  constructor(private localStorageService: LocalStorageService, private api: ApiService) {
+  constructor(private localStorageService: LocalStorageService,
+              private api: ApiService) {
     this.authToken = '';
   }
 
@@ -32,15 +33,15 @@ export class AuthService {
           retry(2),
           catchError(() => of(this.setAuthenticated(false)))
         ).subscribe((user: IUser) => {
-        this.setAuthUser(new User(user));
+            this.setAuthUser(new User(user));
 
-        this.setAuthToken(
-          this.getAuthUser().jwt
-        );
+            this.setAuthToken(
+              this.getAuthUser().jwt
+            );
 
-        this.setAuthenticated(true);
+            this.setAuthenticated(true);
 
-        resolve();
+            resolve();
       });
     });
   }
