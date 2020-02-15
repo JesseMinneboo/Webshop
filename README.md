@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/JesseMinneboo/Webshop">
-    <img src="https://www.hsleiden.nl/binaries/listImageLarge/content/gallery/hsl/logos/logo@2x.png" alt="Logo" width="80" height="80">
+    <img src="https://www.hsleiden.nl/binaries/listImageLarge/content/gallery/hsl/logos/logo@2x.png" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">Webshop in Angular</h3>
