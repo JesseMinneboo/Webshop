@@ -11,7 +11,6 @@ import {ToastrService} from "ngx-toastr";
 })
 export class RegisterComponent implements OnInit {
   isLoading = false;
-  error: string = null;
 
   constructor(private authService: AuthService,
               private router: Router,
