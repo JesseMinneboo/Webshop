@@ -17,7 +17,7 @@
   <h3 align="center">Webshop in Angular</h3>
 
   <p align="center">
-    A webshop made in Angular, powerd by a RESTful api in Dropwizard.
+    A webshop made in Angular, powered by a RESTful api in Dropwizard.
     <br />
     <a href="https://github.com/JesseMinneboo/Webshop"><strong>Explore the docs »</strong></a>
     <br />
@@ -40,7 +40,6 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Usage](#usage)
 * [Roadmap](#roadmap)
 * [License](#license)
 * [Contact](#contact)
@@ -69,7 +68,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* 1. Download npm
+* Download npm
 ```sh
 npm install npm@latest -g
 ```
