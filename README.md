@@ -128,4 +128,4 @@ Project Link: [https://github.com/JesseMinneboo/Webshop](https://github.com/Jess
 [license-url]: https://github.com/JesseMinneboo/Webshop/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/JesseMinneboo
-[product-screenshot]: demo-image.png
+[product-screenshot]: /demo-image.PNG
