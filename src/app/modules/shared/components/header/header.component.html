@@ -1,0 +1,78 @@
+<!--Navbar IS NOT LOGGED IN-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light white sticky-top" [containerInside]="true" *ngIf="!authService.isAuthenticated">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a routerLink="home" class="navbar-brand">
+    Game<span class="logo-blue-color">Zone</span>
+  </a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li [ngClass]="{active: getCurrentRoute() === '/home' || getCurrentRoute() === '/'}" class="nav-item"> <!-- class 'active' to be active-->
+        <a routerLink="home" class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li [ngClass]="{active: getCurrentRoute() === '/store'}" class="nav-item">
+        <a routerLink="store" class="nav-link waves-light" mdbWavesEffect>Store</a>
+      </li>
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+
+      <li routerLink="/login" class="nav-item">
+        <a class="nav-link"><button size="sm" type="button" mdbBtn color="primary" mdbWavesEffect>Login</button></a>
+      </li>
+
+      <li routerLink="/register" class="nav-item">
+        <a class="nav-link"><button size="sm" type="button" mdbBtn color="primary" mdbWavesEffect>Register</button></a>
+      </li>
+
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+
+<!--Navbar IS LOGGED IN-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="true" *ngIf="authService.isAuthenticated">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a routerLink="home" class="navbar-brand">
+    Game<span class="logo-blue-color">Zone</span>
+  </a></mdb-navbar-brand>
+  <!-- Collapsible content -->
+  <links>
+
+    <ul class="navbar-nav mr-auto">
+      <li [ngClass]="{active: getCurrentRoute() === '/home' || getCurrentRoute() === '/'}" class="nav-item"> <!-- class 'active' to be active-->
+        <a routerLink="home" class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li [ngClass]="{active: getCurrentRoute() === '/store'}" class="nav-item">
+        <a routerLink="store" class="nav-link waves-light" mdbWavesEffect>Store</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item avatar dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          <img style="height: auto; width: 35px" src="{{this.authService.getAuthUser().avatarUrl}}" class="img-fluid rounded-circle z-depth-0">
+          {{authService.getAuthUser().getFullName()}}</a>
+        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="account">My account</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="cart">Shopping cart</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
+          <hr *ngIf="authService.isAdmin">
+          <a *ngIf="authService.isAdmin" class="dropdown-item waves-light" mdbWavesEffect routerLink="admin">Admin page</a>
+        </div>
+      </li>
+    </ul>
+
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

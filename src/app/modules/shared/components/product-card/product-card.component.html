@@ -1,0 +1,26 @@
+
+
+
+<div class="card" >
+
+  <div *ngIf="isLoading" class="spinner-grow text-primary" role="status" style="margin: 0 auto">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div *ngIf="!isLoading" class="view overlay">
+    <img class="card-img-top" src="{{ gameElement.imagePath }}" alt="Card image cap">
+    <a routerLink="/store/{{gameElement.id}}" (click)="onClickGame(gameElement.id)"><div class="mask rgba-white-slight"></div></a>
+  </div>
+
+  <div *ngIf="!isLoading" class="card-body">
+    <h4 class="card-title max-lines-1">{{ gameElement.name }}</h4>
+    <p class="card-text max-lines-4">{{ gameElement.description }}</p>
+    <div class="row justify-content-around">
+      <a routerLink="/store/{{gameElement.id}}" (click)="onClickGame(gameElement.id)" class="btn btn-primary">Buy</a>
+      <div class="d-flex align-items-center">
+        <h5 *ngIf="gameElement.price > 0.0">${{ gameElement.price }}</h5>
+        <h5 *ngIf="gameElement.price == 0.0">FREE</h5>
+      </div>
+    </div>
+  </div>
+</div>

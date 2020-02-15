@@ -1,0 +1,71 @@
+<div class="alert alert-danger error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+
+<!-- Default form contact -->
+<form #addGameForm="ngForm"
+      class="text-center border border-light p-5"
+      (ngSubmit)="onAddGame(addGameForm)">
+
+  <p class="h4 mb-4">Add a game</p>
+
+  <!-- Name -->
+  <input type="text"
+         ngModel
+         name="title"
+         required
+         class="form-control mb-4"
+         placeholder="title">
+
+  <!-- Image path -->
+  <input type="text"
+         ngModel
+         name="image"
+         required
+         class="form-control mb-4"
+         placeholder="Image Path">
+
+  <!-- Message -->
+  <div class="form-group">
+    <textarea class="form-control rounded-0"
+              rows="3"
+              ngModel
+              name="description"
+              required
+              placeholder="Description"></textarea>
+  </div>
+
+  <!-- Price -->
+  <input type="number"
+         ngModel
+         name="price"
+         class="form-control mb-4"
+         placeholder="Price"
+         required
+  >
+
+
+  <button mdbBtn
+          color="primary"
+          block="true"
+          class="my-4"
+          type="submit"
+          [disabled]="!addGameForm.valid"
+          *ngIf="!isLoading"
+  >
+    Add
+  </button>
+
+  <button mdbBtn
+          color="primary"
+          type="submit"
+          block="true"
+          class="my-4"
+          disabled
+          *ngIf="isLoading">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
+
+</form>
+<!-- Default form contact -->

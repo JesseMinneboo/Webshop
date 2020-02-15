@@ -1,0 +1,48 @@
+<div class="row push-down-5">
+  <div class="col-md-4">
+
+    <div class="jumbotron">
+      <h2>Your total is: <strong>${{getTotalPrice()}}</strong></h2>
+      <button routerLink="/checkout"
+              mdbBtn color="success"
+              (click)="deleteShoppingCart()"
+              size="md" [disabled]="getTotalPrice() === '0.00'"
+              role="button"
+              mdbWavesEffect
+      >
+        Checkout
+      </button>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+
+    <div class="card">
+      <div id="table" class="table-editable">
+
+        <table class="table  table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Title</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Remove</th>
+          </tr>
+          <tr *ngFor="let game of gamesInList">
+            <td>
+              <span contenteditable="true">{{ game.name }}</span>
+            </td>
+            <td>
+              <span contenteditable="true">{{ game.price }}</span>
+            </td>
+            <td>
+            <span class="table-remove">
+              <button (click)="removeGameByName(game.name)" style="margin: 0" mdbBtn color="danger" size="sm" mdbWavesEffect>Remove</button>
+            </span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+

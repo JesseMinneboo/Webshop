@@ -1,0 +1,47 @@
+<mdb-breadcrumb>
+  <mdb-breadcrumb-item routerLink="/home">Home</mdb-breadcrumb-item>
+  <mdb-breadcrumb-item class="active">{{product.name}}</mdb-breadcrumb-item>
+</mdb-breadcrumb>
+
+<!-- News jumbotron -->
+<div class="jumbotron text-center p-4 push-down-5">
+
+  <div *ngIf="isLoading" class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <!-- Grid row -->
+  <div *ngIf="!isLoading" class="row">
+
+    <!-- Grid column -->
+    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+      <!-- Featured image -->
+      <div class="view overlay waves-light">
+        <img src="{{product.imagePath}}" class="img-fluid" alt="{{product.name}}">
+        <div class="alert alert-danger error" *ngIf="error">
+          <p>{{ error }}</p>
+        </div>
+      </div>
+
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+      <h4 class="h4 mb-4">{{product.name}}</h4>
+
+      <p class="font-weight-normal">{{product.description}}</p>
+      <p class="font-weight-normal">${{product.price}}</p>
+
+      <a  (click)="addToCart()" mdbBtn color="success" size="sm" mdbWavesEffect>Add to cart</a>
+
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+</div>
+<!-- News jumbotron -->

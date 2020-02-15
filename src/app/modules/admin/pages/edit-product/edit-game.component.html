@@ -1,0 +1,68 @@
+<div class="alert alert-danger error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+
+<!-- Default form contact -->
+<form [formGroup]="form"
+      class="text-center border border-light p-5"
+      (ngSubmit)="onEditGame(form)">
+
+  <p class="h4 mb-4">You are editing: {{game.name}}</p>
+
+  <!-- Name -->
+  <input type="text"
+         formControlName="title"
+         name="title"
+         class="form-control mb-4"
+         placeholder="title">
+
+  <!-- Image path -->
+  <input type="text"
+         formControlName="imagePath"
+         name="imagePath"
+         class="form-control mb-4"
+         placeholder="Image Path">
+
+  <!-- Description -->
+  <div class="form-group">
+    <textarea class="form-control rounded-0"
+              formControlName="description"
+              rows="3"
+              name="description"
+              placeholder="Description">
+    </textarea>
+  </div>
+
+  <!-- Price -->
+  <input type="number"
+         formControlName="price"
+         name="price"
+         class="form-control mb-4"
+         placeholder="Price"
+         required
+  >
+
+  <button mdbBtn
+          color="primary"
+          block="true"
+          class="my-4"
+          type="submit"
+          [disabled]="!form.valid"
+          *ngIf="!isLoading"
+  >
+    Add
+  </button>
+
+  <button mdbBtn
+          color="primary"
+          type="submit"
+          block="true"
+          class="my-4"
+          disabled
+          *ngIf="isLoading">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
+
+</form>
+<!-- Default form contact -->

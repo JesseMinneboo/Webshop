@@ -1,0 +1,89 @@
+<div class="alert alert-danger error" *ngIf="error">
+  <p>{{ error }}</p>
+</div>
+
+<!-- Default form register -->
+<form #registerForm="ngForm"
+      (ngSubmit)="onRegisterSubmit(registerForm)"
+  class="text-center border border-light p-5"
+>
+
+  <p class="h4 mb-4">Sign up</p>
+
+  <div class="form-row mb-4">
+    <div class="col">
+      <!-- First name -->
+      <input type="text"
+             id="defaultRegisterFormFirstName"
+             class="form-control"
+             placeholder="First name"
+             ngModel
+             name="name"
+             required
+      >
+    </div>
+    <div class="col">
+      <!-- Last name -->
+      <input type="text"
+             id="defaultRegisterFormLastName"
+             class="form-control"
+             placeholder="Last name"
+             ngModel
+             name="surname"
+             required
+      >
+    </div>
+  </div>
+
+  <!-- E-mail -->
+  <input type="email"
+         id="defaultRegisterFormEmail"
+         class="form-control mb-4"
+         placeholder="E-mail"
+         ngModel
+         name="email"
+         email
+         required
+  >
+
+  <!-- Password -->
+  <input type="password"
+         id="defaultRegisterFormPassword"
+         class="form-control" placeholder="Password"
+         aria-describedby="defaultRegisterFormPasswordHelpBlock"
+         minlength="8"
+         ngModel
+         name="password"
+         required
+  >
+
+  <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+    At least 8 characters
+  </small>
+
+
+  <!-- Sign up button -->
+  <button mdbBtn
+          color="primary"
+          block="true"
+          class="my-4"
+          type="submit"
+          [disabled]="!registerForm.valid"
+          *ngIf="!isLoading"
+  >
+    Sign in
+  </button>
+
+  <button mdbBtn
+          color="primary"
+          type="submit"
+          block="true"
+          class="my-4"
+          disabled
+          *ngIf="isLoading">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Loading...
+  </button>
+
+</form>
+<!-- Default form register -->

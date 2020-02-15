@@ -4,6 +4,10 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+.dark-color {
+  background: #2A2A2A;
+}
+
 .letter-spacing-2 {
   letter-spacing: 2px;
 }
@@ -12,16 +16,12 @@ hr {
   margin: 1% 0;
 }
 
-.max-lines-4 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; /* number of lines to show */
+.push-down-5 {
+  margin-top: 5vh;
 }
 
-.push-down-5 {
-  margin-top: 5%;
+.push-down-up-2-5 {
+  margin: 2.5vh 0;
 }
 
 
