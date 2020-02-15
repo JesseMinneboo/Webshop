@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/JesseMinneboo/Webshop">
-    <img src="https://www.hsleiden.nl/binaries/listImageLarge/content/gallery/hsl/logos/logo@2x.png" alt="Logo" width="120" height="120">
+    <img src="https://adfs.hsleiden.nl/adfs/portal/logo/logo.jpg?id=45F39A10B144CA81073A73EA67131C55FC9ED34BC069E4D2CE6424F67E9D7877" alt="Logo" width="350" height="125">
   </a>
 
   <h3 align="center">Webshop in Angular</h3>
@@ -110,6 +110,7 @@ Project Link: [https://github.com/JesseMinneboo/Webshop](https://github.com/Jess
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
+* [Img Shields](https://shields.io)
 * [Angular documentation](https://angular.io/docs)
 * [Udemy cursus for Angular](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
 
