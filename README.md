@@ -112,7 +112,7 @@ Project Link: [https://github.com/JesseMinneboo/Webshop](https://github.com/Jess
 
 * [Img Shields](https://shields.io)
 * [Angular documentation](https://angular.io/docs)
-* [Udemy cursus for Angular](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
+* [Udemy course for Angular](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
