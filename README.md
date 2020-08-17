@@ -42,8 +42,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](http://webshop.jesseminneboo.nl)
-
 
 ### Built With
 
@@ -93,7 +91,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-JesseMinneboo - werk@jesseminneboo.nl
+JesseMinneboo - s1111192@student.hsleiden.nl
 
 Project Link: [https://github.com/JesseMinneboo/Webshop](https://github.com/JesseMinneboo/Webshop)
 
