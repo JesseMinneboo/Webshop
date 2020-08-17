@@ -1,11 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -115,18 +107,3 @@ Project Link: [https://github.com/JesseMinneboo/Webshop](https://github.com/Jess
 * [Udemy course for Angular](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/JesseMinneboo/Webshop.svg?style=flat-square
-[contributors-url]: https://github.com/JesseMinneboo/Webshop/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/JesseMinneboo/Webshop.svg?style=flat-square
-[forks-url]: https://github.com/JesseMinneboo/Webshop/network/members
-[stars-shield]: https://img.shields.io/github/stars/JesseMinneboo/Webshop.svg?style=flat-square
-[stars-url]: https://github.com/JesseMinneboo/Webshop/stargazers
-[issues-shield]: https://img.shields.io/github/issues/JesseMinneboo/Webshop.svg?style=flat-square
-[issues-url]: https://github.com/JesseMinneboo/Webshop/issues
-[license-shield]: https://img.shields.io/github/license/JesseMinneboo/Webshop.svg?style=flat-square
-[license-url]: https://github.com/JesseMinneboo/Webshop/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/JesseMinneboo
-[product-screenshot]: /demo-image.PNG
